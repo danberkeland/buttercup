@@ -6,6 +6,7 @@ type BakeryItem @model  {
   actionDescrip: String
   actionType: String
   updateList: String
+  location: String
 }
 
 type logUpdate @model  {
@@ -19,5 +20,10 @@ type updateList @model {
   listName: String!
   listType: String
   needList: String
+}
+
+type location @model  {
+  id: ID!
+  locationName: String!
 }
 
