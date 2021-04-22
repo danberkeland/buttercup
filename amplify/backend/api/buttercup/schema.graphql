@@ -1,0 +1,5 @@
+type BakeryItems @model {
+  id: ID!
+  name: String!
+  description: String
+}
