@@ -1,0 +1,10 @@
+{
+  "auth": {
+    "buttercup119e0ebd": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false
+    }
+  }
+}
