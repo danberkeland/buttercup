@@ -1,15 +1,15 @@
 import React from 'react'
 
 
-function Baker2() {
+function BakerList() {
   return (
     <div className="App">
       <header className="App-header">
         
-        <h2>Baker2</h2>
+        <h2>Baker1</h2>
       </header>
     </div>
   );
 }
 
-export default Baker2;
+export default BakerList;

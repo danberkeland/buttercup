@@ -16,12 +16,11 @@ function Nav() {
 
    
    const items = [
-      {label: 'Baker1', icon: 'pi pi-fw pi-chart-bar', command:()=>{ window.location="/Baker1"; }},
-      {label: 'Baker2', icon: 'pi pi-fw pi-map', command:()=>{ window.location="/Baker2"; }},
-      {label: 'OrderList', icon: 'pi pi-fw pi-map', command:()=>{ window.location="/OrderList"; }},
-      {label: 'EODCount', icon: 'pi pi-fw pi-map', command:()=>{ window.location="/EODCount"; }},
-      {label: 'InvCount', icon: 'pi pi-fw pi-shopping-cart', command:()=>{ window.location="/InvCount"; }},
-      {label: 'Settings', icon: 'pi pi-fw pi-users', command:()=>{ window.location="/Settings"; }},
+      {label: 'BakerList', icon: 'pi pi-fw pi-user', command:()=>{ window.location="/BakerList"; }},
+      {label: 'OrderList', icon: 'pi pi-fw pi-shopping-cart', command:()=>{ window.location="/OrderList"; }},
+      {label: 'EODCount', icon: 'pi pi-fw pi-sliders-h', command:()=>{ window.location="/EODCount"; }},
+      {label: 'InvCount', icon: 'pi pi-fw pi-tags', command:()=>{ window.location="/InvCount"; }},
+      {label: 'Settings', icon: 'pi pi-fw pi-cog', command:()=>{ window.location="/Settings"; }},
    ];
 
 

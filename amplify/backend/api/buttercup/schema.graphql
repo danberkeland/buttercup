@@ -1,5 +1,23 @@
-type BakeryItems @model {
+type BakeryItem @model  {
   id: ID!
-  name: String!
-  description: String
+  par: Int
+  ingName: String!
+  trigger: Int
+  actionDescrip: String
+  actionType: String
+  updateList: String
 }
+
+type logUpdate @model  {
+  id: ID!
+  adminName: String!
+  updateList: String
+}
+
+type updateList @model {
+  id: ID!
+  listName: String!
+  listType: String
+  needList: String
+}
+

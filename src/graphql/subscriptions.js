@@ -1,34 +1,115 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const onCreateBakeryItems = /* GraphQL */ `
-  subscription OnCreateBakeryItems {
-    onCreateBakeryItems {
+export const onCreateBakeryItem = /* GraphQL */ `
+  subscription OnCreateBakeryItem {
+    onCreateBakeryItem {
       id
-      name
-      description
+      par
+      ingName
+      trigger
+      actionDescrip
+      actionType
+      updateList
       createdAt
       updatedAt
     }
   }
 `;
-export const onUpdateBakeryItems = /* GraphQL */ `
-  subscription OnUpdateBakeryItems {
-    onUpdateBakeryItems {
+export const onUpdateBakeryItem = /* GraphQL */ `
+  subscription OnUpdateBakeryItem {
+    onUpdateBakeryItem {
       id
-      name
-      description
+      par
+      ingName
+      trigger
+      actionDescrip
+      actionType
+      updateList
       createdAt
       updatedAt
     }
   }
 `;
-export const onDeleteBakeryItems = /* GraphQL */ `
-  subscription OnDeleteBakeryItems {
-    onDeleteBakeryItems {
+export const onDeleteBakeryItem = /* GraphQL */ `
+  subscription OnDeleteBakeryItem {
+    onDeleteBakeryItem {
       id
-      name
-      description
+      par
+      ingName
+      trigger
+      actionDescrip
+      actionType
+      updateList
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onCreateLogUpdate = /* GraphQL */ `
+  subscription OnCreateLogUpdate {
+    onCreateLogUpdate {
+      id
+      adminName
+      updateList
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateLogUpdate = /* GraphQL */ `
+  subscription OnUpdateLogUpdate {
+    onUpdateLogUpdate {
+      id
+      adminName
+      updateList
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteLogUpdate = /* GraphQL */ `
+  subscription OnDeleteLogUpdate {
+    onDeleteLogUpdate {
+      id
+      adminName
+      updateList
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onCreateUpdateList = /* GraphQL */ `
+  subscription OnCreateUpdateList {
+    onCreateUpdateList {
+      id
+      listName
+      listType
+      needList
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateUpdateList = /* GraphQL */ `
+  subscription OnUpdateUpdateList {
+    onUpdateUpdateList {
+      id
+      listName
+      listType
+      needList
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteUpdateList = /* GraphQL */ `
+  subscription OnDeleteUpdateList {
+    onDeleteUpdateList {
+      id
+      listName
+      listType
+      needList
       createdAt
       updatedAt
     }
