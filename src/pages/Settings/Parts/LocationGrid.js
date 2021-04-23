@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 
-import ExpandedIngredientRows from "./ExpandedIngredientRows";
+import { ExpandedIngredientRows } from "./ExpandedIngredientRows";
 import { DeleteLocation } from "./DeleteLocation";
 
 
@@ -15,8 +15,8 @@ const LocationGrid = ({
 
   const [expandedRows, setExpandedRows] = useState(null);
 
-  const rowExpansionTemplate = (data) => {
-    return <ExpandedIngredientRows data={data}/>;
+  const rowExpansionTemplate = () => {
+    return <ExpandedIngredientRows bakeryItems={bakeryItems}/>;
   };
 
   return (
