@@ -11,6 +11,7 @@ export const getBakeryItem = /* GraphQL */ `
       actionDescrip
       actionType
       updateList
+      location
       createdAt
       updatedAt
     }
@@ -31,6 +32,7 @@ export const listBakeryItems = /* GraphQL */ `
         actionDescrip
         actionType
         updateList
+        location
         createdAt
         updatedAt
       }
@@ -91,6 +93,33 @@ export const listUpdateLists = /* GraphQL */ `
         listName
         listType
         needList
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const getLocation = /* GraphQL */ `
+  query GetLocation($id: ID!) {
+    getLocation(id: $id) {
+      id
+      locationName
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listLocations = /* GraphQL */ `
+  query ListLocations(
+    $filter: ModellocationFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listLocations(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        locationName
         createdAt
         updatedAt
       }

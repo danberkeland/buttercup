@@ -14,6 +14,7 @@ export const createBakeryItem = /* GraphQL */ `
       actionDescrip
       actionType
       updateList
+      location
       createdAt
       updatedAt
     }
@@ -32,6 +33,7 @@ export const updateBakeryItem = /* GraphQL */ `
       actionDescrip
       actionType
       updateList
+      location
       createdAt
       updatedAt
     }
@@ -50,6 +52,7 @@ export const deleteBakeryItem = /* GraphQL */ `
       actionDescrip
       actionType
       updateList
+      location
       createdAt
       updatedAt
     }
@@ -137,6 +140,45 @@ export const deleteUpdateList = /* GraphQL */ `
       listName
       listType
       needList
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const createLocation = /* GraphQL */ `
+  mutation CreateLocation(
+    $input: CreateLocationInput!
+    $condition: ModellocationConditionInput
+  ) {
+    createLocation(input: $input, condition: $condition) {
+      id
+      locationName
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updateLocation = /* GraphQL */ `
+  mutation UpdateLocation(
+    $input: UpdateLocationInput!
+    $condition: ModellocationConditionInput
+  ) {
+    updateLocation(input: $input, condition: $condition) {
+      id
+      locationName
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteLocation = /* GraphQL */ `
+  mutation DeleteLocation(
+    $input: DeleteLocationInput!
+    $condition: ModellocationConditionInput
+  ) {
+    deleteLocation(input: $input, condition: $condition) {
+      id
+      locationName
       createdAt
       updatedAt
     }

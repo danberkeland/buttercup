@@ -11,6 +11,7 @@ export const onCreateBakeryItem = /* GraphQL */ `
       actionDescrip
       actionType
       updateList
+      location
       createdAt
       updatedAt
     }
@@ -26,6 +27,7 @@ export const onUpdateBakeryItem = /* GraphQL */ `
       actionDescrip
       actionType
       updateList
+      location
       createdAt
       updatedAt
     }
@@ -41,6 +43,7 @@ export const onDeleteBakeryItem = /* GraphQL */ `
       actionDescrip
       actionType
       updateList
+      location
       createdAt
       updatedAt
     }
@@ -110,6 +113,36 @@ export const onDeleteUpdateList = /* GraphQL */ `
       listName
       listType
       needList
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onCreateLocation = /* GraphQL */ `
+  subscription OnCreateLocation {
+    onCreateLocation {
+      id
+      locationName
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateLocation = /* GraphQL */ `
+  subscription OnUpdateLocation {
+    onUpdateLocation {
+      id
+      locationName
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteLocation = /* GraphQL */ `
+  subscription OnDeleteLocation {
+    onDeleteLocation {
+      id
+      locationName
       createdAt
       updatedAt
     }

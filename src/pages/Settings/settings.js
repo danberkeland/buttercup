@@ -1,14 +1,95 @@
-import React from 'react'
+import React, { useEffect, useState } from "react";
+
+import styled from "styled-components";
+
+import LocationGrid from "./Parts/LocationGrid";
+import AddLocation from "./Parts/AddLocation.js";
+
+
+import { listBakeryItems, listLocations } from "../../graphql/queries";
+
+import { API, graphqlOperation } from "aws-amplify";
+
+
+const BasicContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  border: 1px solid lightgray;
+  padding: 5px 10px;
+  margin: 0px auto;
+  box-sizing: border-box;
+`;
+
+const fetchInfo = async (operation, opString, limit) => {
+  try {
+    let info = await API.graphql(
+      graphqlOperation(operation, {
+        limit: limit,
+      })
+    );
+    let list = info.data[opString].items;
+
+    let noDelete = list.filter((li) => li["_deleted"] !== true);
+    return noDelete;
+  } catch {
+    return [];
+  }
+};
+
 
 
 function Settings() {
+  
+  const [ locations, setLocations ] = useState()
+  const [ bakeryItems, setBakeryItems ] = useState()
+
+  
+    
+
+  useEffect(() => {
+    
+    fetchBakeryItems();
+    fetchLocations()
+    
+  }, []);
+
+
+  const fetchBakeryItems = async () => {
+    try {
+      let items = await fetchInfo(listBakeryItems,"listBakeryItems", "1000");
+      setBakeryItems(items);   
+    } catch (error) {
+      console.log("error on fetching Bakery Items List", error);
+    }
+  };
+
+  const fetchLocations = async () => {
+    try {
+      let locs = await fetchInfo(listLocations,"listLocations", "50");
+      setLocations(locs);
+    } catch (error) {
+      console.log("error on fetching Location List", error);
+    }
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        
-        <h2>Settings</h2>
-      </header>
-    </div>
+    <React.Fragment>
+    
+      <BasicContainer>
+        <h1>Add/Edit Ingredients and Components</h1>
+      </BasicContainer>
+      
+      <BasicContainer>
+        <AddLocation location={locations} setLocation={setLocations}/>
+      </BasicContainer>
+     
+      <BasicContainer>
+        <h2>Ingredients by Location</h2>
+        <LocationGrid location={locations} setLocation={setLocations} bakeryItems={bakeryItems} setBakeryItems={setBakeryItems}/>
+      </BasicContainer>
+      
+    </React.Fragment>
   );
 }
 
