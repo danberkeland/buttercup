@@ -22,10 +22,11 @@ const AddIngredient = ({ loc, bakeryItems, setBakeryItems }) => {
 
 
   const handleAddItem = (e) => {
-    console.log(e)
+  
     let itemsToModify = clonedeep(bakeryItems);
-    console.log(pickedItem)
+  
     let checkItems = itemsToModify.map((items) => items.ingName);
+    
     !checkItems.includes(pickedItem) &&
       itemsToModify.push({
         id: pickedItem+loc,
@@ -37,6 +38,8 @@ const AddIngredient = ({ loc, bakeryItems, setBakeryItems }) => {
         updateList: "",
         location: loc
       });
+
+   
     setBakeryItems(itemsToModify);
     setPickedItem("");
   };

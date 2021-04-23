@@ -6,12 +6,10 @@ import ExpandedIngredientDetailRows from "./ExpandedIngredientDetailRows";
 import AddIngredient from "./AddIngredient";
 
 export const ExpandedIngredientRows = ({ data, bakeryItems, setBakeryItems }) => {
- 
+  
   const [expandedRows, setExpandedRows] = useState(null);
-  console.log(data)
-  console.log(bakeryItems)
   const rowExpansionTemplate = (e) => {
-    return <ExpandedIngredientDetailRows data={e}/>;
+    return <ExpandedIngredientDetailRows data={e} bakeryItems={bakeryItems} setBakeryItems={setBakeryItems}/>;
   };
 
   return (
