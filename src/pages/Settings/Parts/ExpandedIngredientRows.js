@@ -11,7 +11,7 @@ export const ExpandedIngredientRows = ({ data, bakeryItems, setBakeryItems }) =>
   console.log(data)
   console.log(bakeryItems)
   const rowExpansionTemplate = (e) => {
-    return <ExpandedIngredientDetailRows data={e} />;
+    return <ExpandedIngredientDetailRows data={e}/>;
   };
 
   return (
