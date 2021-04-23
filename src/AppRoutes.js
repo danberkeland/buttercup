@@ -9,6 +9,7 @@ import OrderList from './pages/OrderList/orderlist'
 import EODCount from './pages/EODCount/eodcount'
 import InvCount from './pages/InvCount/invcount'
 import Settings from './pages/Settings/settings'
+import { AmplifySignOut } from '@aws-amplify/ui-react'
 
 
 
@@ -23,6 +24,7 @@ function AppRoutes() {
           <Route path="/EODCount" component={EODCount} /> 
           <Route path="/InvCount" component={InvCount} /> 
           <Route path="/Settings" component={Settings} /> 
+          <Route path="/SignOut" component={AmplifySignOut} />
          
         </Switch>
       </div>

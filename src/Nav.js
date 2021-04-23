@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Menubar } from 'primereact/menubar';
-import { AmplifySignOut } from '@aws-amplify/ui-react'
+
 
 
 import 'primereact/resources/themes/saga-blue/theme.css';
@@ -21,6 +21,7 @@ function Nav() {
       {label: 'EODCount', icon: 'pi pi-fw pi-sliders-h', command:()=>{ window.location="/EODCount"; }},
       {label: 'InvCount', icon: 'pi pi-fw pi-tags', command:()=>{ window.location="/InvCount"; }},
       {label: 'Settings', icon: 'pi pi-fw pi-cog', command:()=>{ window.location="/Settings"; }},
+      {label: 'Sign Out', icon: 'pi pi-fw pi-sign-out', command:()=>{ window.location="/SignOut"; }},
    ];
 
 
@@ -29,7 +30,7 @@ function Nav() {
       <div className = "card">
          <React.Fragment>
          <Menubar model={items} />
-         <AmplifySignOut /> 
+        
          </React.Fragment>
          
          
