@@ -5,10 +5,11 @@ import { Column } from "primereact/column";
 import ExpandedIngredientDetailRows from "./ExpandedIngredientDetailRows";
 import AddIngredient from "./AddIngredient";
 
-export const ExpandedIngredientRows = ({ bakeryItems, setBakeryItems }) => {
-  console.log("Hello!")
+export const ExpandedIngredientRows = ({ data, bakeryItems, setBakeryItems }) => {
+ 
   const [expandedRows, setExpandedRows] = useState(null);
-
+  console.log(data)
+  console.log(bakeryItems)
   const rowExpansionTemplate = (e) => {
     return <ExpandedIngredientDetailRows data={e} />;
   };
@@ -16,7 +17,7 @@ export const ExpandedIngredientRows = ({ bakeryItems, setBakeryItems }) => {
   return (
     <div className="delivDate-subtable">
       <DataTable
-        value={bakeryItems}
+        value={bakeryItems.filter(item => item.location === data.locationName)}
         className="p-datatable-sm"
         expandedRows={expandedRows}
         onRowToggle={(e) => setExpandedRows(e.data)}
@@ -28,7 +29,7 @@ export const ExpandedIngredientRows = ({ bakeryItems, setBakeryItems }) => {
 
         <Column field="ingName" header="Ingredient" />
       </DataTable>
-      <AddIngredient bakeryItems={bakeryItems} setBakeryItems={setBakeryItems}/>
+      <AddIngredient loc={data.locationName} bakeryItems={bakeryItems} setBakeryItems={setBakeryItems}/>
     </div>
   );
 };

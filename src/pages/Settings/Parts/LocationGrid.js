@@ -15,8 +15,8 @@ const LocationGrid = ({
 
   const [expandedRows, setExpandedRows] = useState(null);
 
-  const rowExpansionTemplate = () => {
-    return <ExpandedIngredientRows bakeryItems={bakeryItems} setBakeryItems={setBakeryItems}/>;
+  const rowExpansionTemplate = (data) => {
+    return <ExpandedIngredientRows data={data} bakeryItems={bakeryItems} setBakeryItems={setBakeryItems}/>;
   };
 
   return (
@@ -26,7 +26,7 @@ const LocationGrid = ({
           value={locations}
           expandedRows={expandedRows}
           onRowToggle={(e) => setExpandedRows(e.data)}
-          rowExpansionTemplate={rowExpansionTemplate}
+          rowExpansionTemplate={e => rowExpansionTemplate(e)}
           dataKey="locationName"
           className="p-datatable-sm"
         >

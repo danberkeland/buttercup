@@ -17,12 +17,12 @@ const BasicContainer = styled.div`
   box-sizing: border-box;
 `;
 
-const AddIngredient = ({ bakeryItems, setBakeryItems }) => {
+const AddIngredient = ({ loc, bakeryItems, setBakeryItems }) => {
   const [pickedItem, setPickedItem] = useState('');
 
-  let loc="find"
 
   const handleAddItem = (e) => {
+    console.log(e)
     let itemsToModify = clonedeep(bakeryItems);
     console.log(pickedItem)
     let checkItems = itemsToModify.map((items) => items.ingName);
