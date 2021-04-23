@@ -25,7 +25,7 @@ const AddIngredient = ({ bakeryItems, setBakeryItems }) => {
   const handleAddItem = (e) => {
     let itemsToModify = clonedeep(bakeryItems);
     console.log(pickedItem)
-    let checkItems = itemsToModify.map((items) => items.locationName);
+    let checkItems = itemsToModify.map((items) => items.ingName);
     !checkItems.includes(pickedItem) &&
       itemsToModify.push({
         id: pickedItem+loc,
@@ -55,7 +55,7 @@ const AddIngredient = ({ bakeryItems, setBakeryItems }) => {
               value={pickedItem}
               onChange={(e) => setPickedItem(e.target.value)}
             />
-            <label htmlFor="in">Add Location</label>
+            <label htmlFor="in">Add Ingredient</label>
           </span>
         
       </BasicContainer>

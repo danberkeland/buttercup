@@ -5,7 +5,7 @@ import { Column } from "primereact/column";
 import ExpandedIngredientDetailRows from "./ExpandedIngredientDetailRows";
 import AddIngredient from "./AddIngredient";
 
-export const ExpandedIngredientRows = ({ bakeryItems }) => {
+export const ExpandedIngredientRows = ({ bakeryItems, setBakeryItems }) => {
   console.log("Hello!")
   const [expandedRows, setExpandedRows] = useState(null);
 
@@ -28,7 +28,7 @@ export const ExpandedIngredientRows = ({ bakeryItems }) => {
 
         <Column field="ingName" header="Ingredient" />
       </DataTable>
-      <AddIngredient />
+      <AddIngredient bakeryItems={bakeryItems} setBakeryItems={setBakeryItems}/>
     </div>
   );
 };

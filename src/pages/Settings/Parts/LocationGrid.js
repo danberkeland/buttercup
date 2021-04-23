@@ -16,7 +16,7 @@ const LocationGrid = ({
   const [expandedRows, setExpandedRows] = useState(null);
 
   const rowExpansionTemplate = () => {
-    return <ExpandedIngredientRows bakeryItems={bakeryItems}/>;
+    return <ExpandedIngredientRows bakeryItems={bakeryItems} setBakeryItems={setBakeryItems}/>;
   };
 
   return (
