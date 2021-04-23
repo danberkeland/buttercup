@@ -22,11 +22,12 @@ const AddLocation = ({ locations, setLocations }) => {
 
   const handleAddLocation = (e) => {
     let locsToModify = clonedeep(locations);
-
+    console.log(pickedLocation)
     let checkLocs = locsToModify.map((locs) => locs.locationName);
-    !checkLocs.includes(e.target.value) &&
+    !checkLocs.includes(pickedLocation) &&
       locsToModify.push({
-        locationName: e.target.value,
+        id: pickedLocation,
+        locationName: pickedLocation,
       });
     setLocations(locsToModify);
     setPickedLocation("");

@@ -86,7 +86,7 @@ function Settings() {
      
       <BasicContainer>
         <h2>Ingredients</h2>
-        <LocationGrid location={locations} setLocation={setLocations} bakeryItems={bakeryItems} setBakeryItems={setBakeryItems}/>
+        <LocationGrid locations={locations} setLocations={setLocations} bakeryItems={bakeryItems} setBakeryItems={setBakeryItems}/>
       </BasicContainer>
       
     </React.Fragment>
