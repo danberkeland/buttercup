@@ -10,7 +10,7 @@ const clonedeep = require("lodash.clonedeep");
 const BasicContainer = styled.div`
   display: flex;
   flex-direction: row;
-  width: 80%;
+  width: 95%;
   margin: auto;
   justify-content: space-around;
 
@@ -36,8 +36,8 @@ const AddLocation = ({ locations, setLocations }) => {
     <React.Fragment>
       <BasicContainer>
         
-          <Button value={pickedLocation} onClick={(e) => handleAddLocation(e)}>
-            ADD LOCATION +
+          <Button icon="pi pi-plus" className="p-button-rounded" value={pickedLocation} onClick={(e) => handleAddLocation(e)}>
+            
           </Button>
 
           <span className="p-float-label">
@@ -46,7 +46,7 @@ const AddLocation = ({ locations, setLocations }) => {
               value={pickedLocation}
               onChange={(e) => setPickedLocation(e.target.value)}
             />
-            <label htmlFor="in">New Location</label>
+            <label htmlFor="in">Add Location</label>
           </span>
         
       </BasicContainer>

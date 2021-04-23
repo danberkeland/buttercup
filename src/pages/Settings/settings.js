@@ -14,10 +14,10 @@ import { API, graphqlOperation } from "aws-amplify";
 const BasicContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: 70%;
+  width: 95%;
   border: 1px solid lightgray;
   padding: 5px 10px;
-  margin: 0px auto;
+  margin: 4px auto;
   box-sizing: border-box;
 `;
 
@@ -77,7 +77,7 @@ function Settings() {
     <React.Fragment>
     
       <BasicContainer>
-        <h1>Add/Edit Ingredients and Components</h1>
+        <h1>Add/Edit Ingredients</h1>
       </BasicContainer>
       
       <BasicContainer>
@@ -85,7 +85,7 @@ function Settings() {
       </BasicContainer>
      
       <BasicContainer>
-        <h2>Ingredients by Location</h2>
+        <h2>Ingredients</h2>
         <LocationGrid location={locations} setLocation={setLocations} bakeryItems={bakeryItems} setBakeryItems={setBakeryItems}/>
       </BasicContainer>
       
