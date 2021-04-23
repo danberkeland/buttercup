@@ -18,7 +18,7 @@ const BasicContainer = styled.div`
 `;
 
 const AddLocation = ({ locations, setLocations }) => {
-  const [pickedLocation, setPickedLocation] = useState();
+  const [pickedLocation, setPickedLocation] = useState('');
 
   const handleAddLocation = (e) => {
     let locsToModify = clonedeep(locations);

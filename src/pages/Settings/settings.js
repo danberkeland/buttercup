@@ -41,8 +41,8 @@ const fetchInfo = async (operation, opString, limit) => {
 
 function Settings() {
   
-  const [ locations, setLocations ] = useState()
-  const [ bakeryItems, setBakeryItems ] = useState()
+  const [ locations, setLocations ] = useState([])
+  const [ bakeryItems, setBakeryItems ] = useState([])
 
   
     
@@ -81,7 +81,7 @@ function Settings() {
       </BasicContainer>
       
       <BasicContainer>
-        <AddLocation location={locations} setLocation={setLocations}/>
+        <AddLocation locations={locations} setLocations={setLocations}/>
       </BasicContainer>
      
       <BasicContainer>
