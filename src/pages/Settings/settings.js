@@ -5,6 +5,8 @@ import styled from "styled-components";
 import LocationGrid from "./Parts/LocationGrid";
 import AddLocation from "./Parts/AddLocation.js";
 
+import { Button } from 'primereact/button';
+
 import { listBakeryItems, listLocations } from "../../graphql/queries";
 
 import { API, graphqlOperation } from "aws-amplify";
@@ -18,6 +20,13 @@ const BasicContainer = styled.div`
   padding: 5px 10px;
   margin: 4px auto;
   box-sizing: border-box;
+`;
+
+const UploadButtonContainer = styled.div`
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  z-index: 10;
 `;
 
 const fetchInfo = async (operation, opString, limit) => {
@@ -77,6 +86,11 @@ function Settings() {
 
   return (
     <React.Fragment>
+
+      <UploadButtonContainer>
+      <Button icon="pi pi-upload" className="p-button-raised p-button-rounded p-button-danger p-button-lg" />
+      </UploadButtonContainer>
+
       <BasicContainer>
         <h1>Add/Edit Ingredients</h1>
       </BasicContainer>
