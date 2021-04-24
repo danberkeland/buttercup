@@ -23,7 +23,7 @@ const BasicContainer = styled.div`
 `;
 
 const UploadButtonContainer = styled.div`
-  position: absolute;
+  position: fixed;
   right: 20px;
   top: 20px;
   z-index: 10;
