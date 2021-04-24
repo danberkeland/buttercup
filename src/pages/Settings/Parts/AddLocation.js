@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 
 import { Button } from "primereact/button";
 import { InputText } from "primereact/inputtext";
 
 import styled from "styled-components";
+import { ToggleContext } from "../../../dataContexts/ToggleContext";
 
 const clonedeep = require("lodash.clonedeep");
 
@@ -20,6 +21,8 @@ const BasicContainer = styled.div`
 const AddLocation = ({ locations, setLocations }) => {
   const [pickedLocation, setPickedLocation] = useState('');
 
+  const { setIsModified } = useContext(ToggleContext)
+
   const handleAddLocation = (e) => {
     let locsToModify = clonedeep(locations);
    
@@ -31,6 +34,7 @@ const AddLocation = ({ locations, setLocations }) => {
       });
     setLocations(locsToModify);
     setPickedLocation("");
+    setIsModified(true)
   };
 
   return (

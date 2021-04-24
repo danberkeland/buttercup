@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 
 import { Button } from "primereact/button";
 import { InputText } from "primereact/inputtext";
 
 import styled from "styled-components";
+import { ToggleContext } from "../../../dataContexts/ToggleContext";
 
 const clonedeep = require("lodash.clonedeep");
 
@@ -18,49 +19,50 @@ const BasicContainer = styled.div`
 `;
 
 const AddIngredient = ({ loc, bakeryItems, setBakeryItems }) => {
-  const [pickedItem, setPickedItem] = useState('');
+  const [pickedItem, setPickedItem] = useState("");
 
+  const { setIsModified } = useContext(ToggleContext);
 
   const handleAddItem = (e) => {
-  
     let itemsToModify = clonedeep(bakeryItems);
-  
+
     let checkItems = itemsToModify.map((items) => items.ingName);
-    
+
     !checkItems.includes(pickedItem) &&
       itemsToModify.push({
-        id: pickedItem+loc,
+        id: pickedItem + loc,
         par: 0,
         ingName: pickedItem,
         trigger: 100,
         actionDescrip: "",
         actionType: "",
         updateList: "",
-        location: loc
+        location: loc,
       });
 
-   
     setBakeryItems(itemsToModify);
     setPickedItem("");
+    setIsModified(true);
   };
 
   return (
     <React.Fragment>
       <BasicContainer>
-        
-          <Button icon="pi pi-plus" className="p-button-rounded" value={pickedItem} onClick={(e) => handleAddItem(e)}>
-            
-          </Button>
+        <Button
+          icon="pi pi-plus"
+          className="p-button-rounded"
+          value={pickedItem}
+          onClick={(e) => handleAddItem(e)}
+        ></Button>
 
-          <span className="p-float-label">
-            <InputText
-              id="newLocation"
-              value={pickedItem}
-              onChange={(e) => setPickedItem(e.target.value)}
-            />
-            <label htmlFor="in">Add Ingredient</label>
-          </span>
-        
+        <span className="p-float-label">
+          <InputText
+            id="newLocation"
+            value={pickedItem}
+            onChange={(e) => setPickedItem(e.target.value)}
+          />
+          <label htmlFor="in">Add Ingredient</label>
+        </span>
       </BasicContainer>
     </React.Fragment>
   );

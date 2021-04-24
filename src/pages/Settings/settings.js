@@ -5,7 +5,7 @@ import styled from "styled-components";
 import LocationGrid from "./Parts/LocationGrid";
 import AddLocation from "./Parts/AddLocation.js";
 
-import { Button } from 'primereact/button';
+import { Button } from "primereact/button";
 
 import { listBakeryItems, listLocations } from "../../graphql/queries";
 
@@ -49,27 +49,21 @@ function Settings() {
   const [locations, setLocations] = useState([]);
   const [bakeryItems, setBakeryItems] = useState([]);
 
-  const { setIsLoading } = useContext(ToggleContext);
-
-  
-
-
+  const { setIsLoading, isModified } = useContext(ToggleContext);
 
   useEffect(() => {
-   
     fetchBakeryItems();
     fetchLocations();
-    
   }, []);
 
   const fetchBakeryItems = async () => {
-    setIsLoading(true)
+    setIsLoading(true);
     try {
       let items = await fetchInfo(listBakeryItems, "listBakeryItems", "1000");
       setBakeryItems(items);
     } catch (error) {
       console.log("error on fetching Bakery Items List", error);
-      setIsLoading(false)
+      setIsLoading(false);
     }
   };
 
@@ -77,18 +71,24 @@ function Settings() {
     try {
       let locs = await fetchInfo(listLocations, "listLocations", "50");
       setLocations(locs);
-      setIsLoading(false)
+      setIsLoading(false);
     } catch (error) {
       console.log("error on fetching Location List", error);
-      setIsLoading(false)
+      setIsLoading(false);
     }
   };
 
   return (
     <React.Fragment>
-
       <UploadButtonContainer>
-      <Button icon="pi pi-upload" className="p-button-raised p-button-rounded p-button-danger p-button-lg" />
+        {isModified ? (
+          <Button
+            icon="pi pi-upload"
+            className="p-button-raised p-button-rounded p-button-danger p-button-lg"
+          />
+        ) : (
+          <div></div>
+        )}
       </UploadButtonContainer>
 
       <BasicContainer>

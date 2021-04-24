@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 
 import { InputText } from "primereact/inputtext";
 import { Dropdown } from "primereact/dropdown";
+import { ToggleContext } from "../../../dataContexts/ToggleContext";
 
 const clonedeep = require("lodash.clonedeep");
 
@@ -18,8 +19,7 @@ const lists = [
 function ExpandedIngredientDetailRows({ data, bakeryItems, setBakeryItems }) {
   const [pickedItem, setPickedItem] = useState();
 
-  const [list, setList] = useState();
-  const [code, setCode] = useState();
+  const { setIsModified } = useContext(ToggleContext);
 
   const handleNumberChange = (e, attr) => {
     if (e.code === "Enter") {
@@ -33,8 +33,10 @@ function ExpandedIngredientDetailRows({ data, bakeryItems, setBakeryItems }) {
       listToModify[ind][attr] = Number(e.target.value);
 
       setBakeryItems(listToModify);
+      setIsModified(true);
     } else {
       setPickedItem(e.value);
+      setIsModified(true);
     }
   };
 
@@ -47,46 +49,34 @@ function ExpandedIngredientDetailRows({ data, bakeryItems, setBakeryItems }) {
     listToModify[ind][attr] = Number(e.target.value);
 
     setBakeryItems(listToModify);
+    setIsModified(true);
   };
 
   const handleStringChange = (e, attr) => {
-    
-      let listToModify = clonedeep(bakeryItems);
-      console.log(listToModify);
-      let ind = listToModify.findIndex(
-        (inv) =>
-          inv["ingName"] === data.ingName && inv["location"] === data.location
-      );
-      console.log(e.target.value);
-      listToModify[ind][attr] = e.target.value;
-
-      setBakeryItems(listToModify);
-    
-  };
-
-  const handleStringBlur = (e, attr) => {
     let listToModify = clonedeep(bakeryItems);
+    console.log(listToModify);
     let ind = listToModify.findIndex(
       (inv) =>
         inv["ingName"] === data.ingName && inv["location"] === data.location
     );
+    console.log(e.target.value);
     listToModify[ind][attr] = e.target.value;
 
     setBakeryItems(listToModify);
+    setIsModified(true);
   };
 
   const reduceList = () => {
-    let reducedList = lists.map(red => red.name)
-    reducedList = new Set(reducedList)
-    reducedList = Array.from(reducedList)
-    reducedList = reducedList.map(red => ({
+    let reducedList = lists.map((red) => red.name);
+    reducedList = new Set(reducedList);
+    reducedList = Array.from(reducedList);
+    reducedList = reducedList.map((red) => ({
       name: red,
-      code: red
-    }))
-    
-    return reducedList
-  }
+      code: red,
+    }));
 
+    return reducedList;
+  };
 
   return (
     <div>
@@ -122,26 +112,30 @@ function ExpandedIngredientDetailRows({ data, bakeryItems, setBakeryItems }) {
         <br />
         <br />
       </div>
-     
-      
-        <Dropdown
-          optionLabel="name"
-          optionValue="name"
-          value={data.actionType}
-          options={reduceList()}
-          onChange={(e) => handleStringChange(e, "updateList")}
-          placeholder={data.updateList === "" ? "Select updateList" : data.updateList}
-        /><br /><br />
-        <Dropdown
-          optionLabel="list"
-          optionValue="list"
-          disabled = {data.updateList ==="" ? true : false}
-          value={data.updateList}
-          options={lists.filter(li => li.name === data.updateList)}
-          onChange={(e) => handleStringChange(e, "actionType")}
-          placeholder={data.actionType === "" ? "Select actionType" : data.actionType}
-        />
-     
+
+      <Dropdown
+        optionLabel="name"
+        optionValue="name"
+        value={data.actionType}
+        options={reduceList()}
+        onChange={(e) => handleStringChange(e, "updateList")}
+        placeholder={
+          data.updateList === "" ? "Select updateList" : data.updateList
+        }
+      />
+      <br />
+      <br />
+      <Dropdown
+        optionLabel="list"
+        optionValue="list"
+        disabled={data.updateList === "" ? true : false}
+        value={data.updateList}
+        options={lists.filter((li) => li.name === data.updateList)}
+        onChange={(e) => handleStringChange(e, "actionType")}
+        placeholder={
+          data.actionType === "" ? "Select actionType" : data.actionType
+        }
+      />
     </div>
   );
 }
