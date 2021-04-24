@@ -1,13 +1,11 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Button } from "primereact/button";
 
 import swal from "@sweetalert/with-react";
-import { ToggleContext } from "../../../dataContexts/ToggleContext";
 
 const clonedeep = require("lodash.clonedeep");
 
-export const DeleteLocation = (id, locations, setLocations) => {
-  const { setIsModified } = useContext(ToggleContext);
+const DeleteLocation = (id, locations, setLocations,setIsModified) => {
 
   const deleteCheck = (id) => {
     swal({
@@ -40,3 +38,5 @@ export const DeleteLocation = (id, locations, setLocations) => {
     />
   );
 };
+
+export default DeleteLocation

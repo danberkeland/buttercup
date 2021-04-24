@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 
 import { ExpandedIngredientRows } from "./ExpandedIngredientRows";
-import { DeleteLocation } from "./DeleteLocation";
+import DeleteLocation from "./DeleteLocation";
+import { ToggleContext } from "../../../dataContexts/ToggleContext";
 
 
 const LocationGrid = ({
@@ -14,6 +15,7 @@ const LocationGrid = ({
 }) => {
 
   const [expandedRows, setExpandedRows] = useState(null);
+  const { setIsModified } = useContext(ToggleContext)
 
   const rowExpansionTemplate = (data) => {
     return <ExpandedIngredientRows data={data} bakeryItems={bakeryItems} setBakeryItems={setBakeryItems}/>;
@@ -35,7 +37,7 @@ const LocationGrid = ({
 
           <Column
             headerStyle={{ width: "4rem" }}
-            body={(e) => DeleteLocation(e.id,locations,setLocations)}
+            body={(e) => DeleteLocation(e.id,locations,setLocations,setIsModified)}
           ></Column>
         </DataTable>
       </div>

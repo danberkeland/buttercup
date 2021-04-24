@@ -2,12 +2,10 @@ import React, { useContext } from "react";
 import { Button } from "primereact/button";
 
 import swal from "@sweetalert/with-react";
-import { ToggleContext } from "../../../dataContexts/ToggleContext";
 
 const clonedeep = require("lodash.clonedeep");
 
-export const DeleteIngredient = (id, location, bakeryItems, setBakeryItems) => {
-  const { setIsModified } = useContext(ToggleContext);
+const DeleteIngredient = (id, location, bakeryItems, setBakeryItems, setIsModified) => {
 
   const deleteCheck = (id, location, bakeryItems) => {
     swal({
@@ -45,3 +43,5 @@ export const DeleteIngredient = (id, location, bakeryItems, setBakeryItems) => {
     />
   );
 };
+
+export default DeleteIngredient

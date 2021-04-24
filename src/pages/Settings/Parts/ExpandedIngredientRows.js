@@ -1,14 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 
 import ExpandedIngredientDetailRows from "./ExpandedIngredientDetailRows";
 import AddIngredient from "./AddIngredient";
-import { DeleteIngredient } from "./DeleteIngredient";
+import DeleteIngredient from "./DeleteIngredient";
+import { ToggleContext } from "../../../dataContexts/ToggleContext";
 
 export const ExpandedIngredientRows = ({ data, bakeryItems, setBakeryItems }) => {
   
   const [expandedRows, setExpandedRows] = useState(null);
+  const { setIsModified } = useContext(ToggleContext)
   const rowExpansionTemplate = (e) => {
     return <ExpandedIngredientDetailRows data={e} bakeryItems={bakeryItems} setBakeryItems={setBakeryItems}/>;
   };
@@ -37,7 +39,7 @@ export const ExpandedIngredientRows = ({ data, bakeryItems, setBakeryItems }) =>
         <Column field="ingName" header="Ingredient" body={e => createIngName(e)}/>
         <Column
             headerStyle={{ width: "4rem" }}
-            body={(e) => DeleteIngredient(e.ingName,data.locationName,bakeryItems,setBakeryItems)}
+            body={(e) => DeleteIngredient(e.ingName,data.locationName,bakeryItems,setBakeryItems,setIsModified)}
           ></Column>
       </DataTable>
       <AddIngredient loc={data.locationName} bakeryItems={bakeryItems} setBakeryItems={setBakeryItems}/>
