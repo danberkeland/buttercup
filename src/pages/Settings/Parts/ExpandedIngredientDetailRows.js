@@ -4,6 +4,10 @@ import { InputText } from "primereact/inputtext";
 import { Dropdown } from "primereact/dropdown";
 import { ToggleContext } from "../../../dataContexts/ToggleContext";
 
+import { updateBakeryItem } from "../../../graphql/mutations";
+
+import { API, graphqlOperation } from "aws-amplify";
+
 const clonedeep = require("lodash.clonedeep");
 
 const lists = [
@@ -19,51 +23,81 @@ const lists = [
 function ExpandedIngredientDetailRows({ data, bakeryItems, setBakeryItems }) {
   const [pickedItem, setPickedItem] = useState();
 
-  const { setIsModified } = useContext(ToggleContext);
+  const { setIsLoading } = useContext(ToggleContext);
+
+  const updateDBattr = async (id, attr, val) => {
+    setIsLoading(true);
+    let addDetails = {
+      id: id,
+      [attr]: val,
+    };
+    try {
+      await API.graphql(
+        graphqlOperation(updateBakeryItem, { input: { ...addDetails } })
+      );
+      setIsLoading(false);
+    } catch (error) {
+      console.log("error on updating bakery items", error);
+      setIsLoading(false);
+    }
+  };
 
   const handleNumberChange = (e, attr) => {
-    if (e.code === "Enter") {
-      let listToModify = clonedeep(bakeryItems);
-      console.log(listToModify);
-      let ind = listToModify.findIndex(
-        (inv) =>
-          inv["ingName"] === data.ingName && inv["location"] === data.location
-      );
-      console.log(e.target.value);
-      listToModify[ind][attr] = Number(e.target.value);
+    try {
+      if (e.code === "Enter") {
+        let listToModify = clonedeep(bakeryItems);
+        let id = data.ingName + data.location;
+        let ind = listToModify.findIndex(
+          (inv) =>
+            inv["ingName"] === data.ingName && inv["location"] === data.location
+        );
+        let val = Number(e.target.value);
+        listToModify[ind][attr] = val;
 
-      setBakeryItems(listToModify);
-      setIsModified(true);
-    } else {
-      setPickedItem(e.value);
-      setIsModified(true);
+        setBakeryItems(listToModify);
+        updateDBattr(id, attr, val);
+      } else {
+        setPickedItem(e.value);
+      }
+    } catch {
+      console.log("error updating attribute.");
     }
   };
 
   const handleNumberBlur = (e, attr) => {
-    let listToModify = clonedeep(bakeryItems);
-    let ind = listToModify.findIndex(
-      (inv) =>
-        inv["ingName"] === data.ingName && inv["location"] === data.location
-    );
-    listToModify[ind][attr] = Number(e.target.value);
+    try {
+      let listToModify = clonedeep(bakeryItems);
+      let id = data.ingName + data.location;
+      let ind = listToModify.findIndex(
+        (inv) =>
+          inv["ingName"] === data.ingName && inv["location"] === data.location
+      );
+      let val = Number(e.target.value);
+      listToModify[ind][attr] = val;
+      updateDBattr(id, attr, val);
 
-    setBakeryItems(listToModify);
-    setIsModified(true);
+      setBakeryItems(listToModify);
+    } catch {
+      console.log("error updating attribute");
+    }
   };
 
   const handleStringChange = (e, attr) => {
-    let listToModify = clonedeep(bakeryItems);
-    console.log(listToModify);
-    let ind = listToModify.findIndex(
-      (inv) =>
-        inv["ingName"] === data.ingName && inv["location"] === data.location
-    );
-    console.log(e.target.value);
-    listToModify[ind][attr] = e.target.value;
+    try {
+      let listToModify = clonedeep(bakeryItems);
+      let id = data.ingName + data.location;
+      let ind = listToModify.findIndex(
+        (inv) =>
+          inv["ingName"] === data.ingName && inv["location"] === data.location
+      );
+      let val = e.target.value;
+      listToModify[ind][attr] = val;
+      updateDBattr(id, attr, val);
 
-    setBakeryItems(listToModify);
-    setIsModified(true);
+      setBakeryItems(listToModify);
+    } catch {
+      console.log("error updating attribute.");
+    }
   };
 
   const reduceList = () => {
