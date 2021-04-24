@@ -49,7 +49,7 @@ function Settings() {
   const [locations, setLocations] = useState([]);
   const [bakeryItems, setBakeryItems] = useState([]);
 
-  const { setIsLoading, isModified } = useContext(ToggleContext);
+  const { setIsLoading, isModified, setIsModified } = useContext(ToggleContext);
 
   useEffect(() => {
     fetchBakeryItems();
@@ -78,6 +78,26 @@ function Settings() {
     }
   };
 
+  const handleInfoUpload = () => {
+    setIsLoading(true)
+
+    for (let bake of bakeryItems){
+      //      if bakeryItem exists, update
+      //  else, add
+    }
+
+    for (let loc of locations){
+      //  item for item in locations
+      //    if location exists, update
+      //  else, add
+    }
+    
+
+
+    setIsModified(false)
+    setIsLoading(false)
+  }
+
   return (
     <React.Fragment>
       <UploadButtonContainer>
@@ -85,6 +105,7 @@ function Settings() {
           <Button
             icon="pi pi-upload"
             className="p-button-raised p-button-rounded p-button-danger p-button-lg"
+            onClick={handleInfoUpload}
           />
         ) : (
           <div></div>

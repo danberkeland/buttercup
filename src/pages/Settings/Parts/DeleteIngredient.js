@@ -1,11 +1,15 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Button } from "primereact/button";
 
 import swal from "@sweetalert/with-react";
 
+import { deleteBakeryItem } from "../../../graphql/mutations";
+
+import { API, graphqlOperation } from "aws-amplify";
+
 const clonedeep = require("lodash.clonedeep");
 
-const DeleteIngredient = (id, location, bakeryItems, setBakeryItems, setIsModified) => {
+const DeleteIngredient = (id, location, bakeryItems, setBakeryItems, setIsLoading) => {
 
   const deleteCheck = (id, location, bakeryItems) => {
     swal({
@@ -23,16 +27,36 @@ const DeleteIngredient = (id, location, bakeryItems, setBakeryItems, setIsModifi
     });
   };
 
+  const deleteDBBakeryItem = async (id) => {
+    const deleteDetails = {
+      id: id,
+    };
+    try {
+      await API.graphql(
+        graphqlOperation(deleteBakeryItem, { input: { ...deleteDetails } })
+      );
+      setIsLoading(false)
+      
+    } catch (error) {
+      console.log("error on fetching Cust List", error);
+      setIsLoading(false)
+    }
+  }
+
   const deleteIngredientFinal = (id, location, bakeryItems) => {
+    setIsLoading(true)
+    try{
     let itemsToModify = clonedeep(bakeryItems);
-    console.log(id);
-    console.log(location);
-    console.log(itemsToModify);
     itemsToModify = itemsToModify.filter(
       (item) => item["ingName"] !== id && item["location"] === location
     );
     setBakeryItems(itemsToModify);
-    setIsModified(true);
+    console.log(id+location)
+    deleteDBBakeryItem(id+location)
+  } catch {
+    console.log("error deleting bakery item")
+    setIsLoading(false)
+  }
   };
 
   return (

@@ -15,7 +15,7 @@ const LocationGrid = ({
 }) => {
 
   const [expandedRows, setExpandedRows] = useState(null);
-  const { setIsModified } = useContext(ToggleContext)
+  const { setIsLoading } = useContext(ToggleContext)
 
   const rowExpansionTemplate = (data) => {
     return <ExpandedIngredientRows data={data} bakeryItems={bakeryItems} setBakeryItems={setBakeryItems}/>;
@@ -37,7 +37,7 @@ const LocationGrid = ({
 
           <Column
             headerStyle={{ width: "4rem" }}
-            body={(e) => DeleteLocation(e.id,locations,setLocations,setIsModified)}
+            body={(e) => DeleteLocation(e.id,locations,setLocations,setIsLoading)}
           ></Column>
         </DataTable>
       </div>

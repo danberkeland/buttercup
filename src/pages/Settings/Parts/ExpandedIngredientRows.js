@@ -10,7 +10,7 @@ import { ToggleContext } from "../../../dataContexts/ToggleContext";
 export const ExpandedIngredientRows = ({ data, bakeryItems, setBakeryItems }) => {
   
   const [expandedRows, setExpandedRows] = useState(null);
-  const { setIsModified } = useContext(ToggleContext)
+  const { setIsLoading } = useContext(ToggleContext)
   const rowExpansionTemplate = (e) => {
     return <ExpandedIngredientDetailRows data={e} bakeryItems={bakeryItems} setBakeryItems={setBakeryItems}/>;
   };
@@ -39,7 +39,7 @@ export const ExpandedIngredientRows = ({ data, bakeryItems, setBakeryItems }) =>
         <Column field="ingName" header="Ingredient" body={e => createIngName(e)}/>
         <Column
             headerStyle={{ width: "4rem" }}
-            body={(e) => DeleteIngredient(e.ingName,data.locationName,bakeryItems,setBakeryItems,setIsModified)}
+            body={(e) => DeleteIngredient(e.ingName,data.locationName,bakeryItems,setBakeryItems,setIsLoading)}
           ></Column>
       </DataTable>
       <AddIngredient loc={data.locationName} bakeryItems={bakeryItems} setBakeryItems={setBakeryItems}/>
