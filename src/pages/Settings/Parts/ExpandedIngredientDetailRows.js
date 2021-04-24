@@ -1,11 +1,25 @@
 import React, { useState } from "react";
 
 import { InputText } from "primereact/inputtext";
+import { Dropdown } from "primereact/dropdown";
 
 const clonedeep = require("lodash.clonedeep");
 
+const lists = [
+  { name: "Baker", code: "baker", list: "Mix" },
+  { name: "Baker", code: "baker", list: "Make" },
+  { name: "Baker", code: "baker", list: "Scale" },
+  { name: "Order", code: "order", list: "Robb Ross" },
+  { name: "Order", code: "order", list: "Pyra" },
+  { name: "Shop", code: "shop", list: "Costco" },
+  { name: "Shop", code: "shop", list: "Smart n Final" },
+];
+
 function ExpandedIngredientDetailRows({ data, bakeryItems, setBakeryItems }) {
   const [pickedItem, setPickedItem] = useState();
+
+  const [list, setList] = useState();
+  const [code, setCode] = useState();
 
   const handleNumberChange = (e, attr) => {
     if (e.code === "Enter") {
@@ -36,7 +50,7 @@ function ExpandedIngredientDetailRows({ data, bakeryItems, setBakeryItems }) {
   };
 
   const handleStringChange = (e, attr) => {
-    if (e.code === "Enter") {
+    
       let listToModify = clonedeep(bakeryItems);
       console.log(listToModify);
       let ind = listToModify.findIndex(
@@ -47,9 +61,7 @@ function ExpandedIngredientDetailRows({ data, bakeryItems, setBakeryItems }) {
       listToModify[ind][attr] = e.target.value;
 
       setBakeryItems(listToModify);
-    } else {
-      setPickedItem(e.value);
-    }
+    
   };
 
   const handleStringBlur = (e, attr) => {
@@ -62,6 +74,19 @@ function ExpandedIngredientDetailRows({ data, bakeryItems, setBakeryItems }) {
 
     setBakeryItems(listToModify);
   };
+
+  const reduceList = () => {
+    let reducedList = lists.map(red => red.name)
+    reducedList = new Set(reducedList)
+    reducedList = Array.from(reducedList)
+    reducedList = reducedList.map(red => ({
+      name: red,
+      code: red
+    }))
+    
+    return reducedList
+  }
+
 
   return (
     <div>
@@ -97,38 +122,26 @@ function ExpandedIngredientDetailRows({ data, bakeryItems, setBakeryItems }) {
         <br />
         <br />
       </div>
-      <div className="p-field">
-        <label htmlFor="actionType" className="p-d-block">
-          Action Type
-        </label>
-        <br />
-        <InputText
-          id="actionType"
-          aria-describedby="actionType"
-          className="p-d-block"
-          placeholder={data.actionType}
-          onKeyUp={(e) => handleStringChange(e, "actionType")}
-          onBlur={(e) => handleStringBlur(e, "actionType")}
+     
+      
+        <Dropdown
+          optionLabel="name"
+          optionValue="name"
+          value={data.actionType}
+          options={reduceList()}
+          onChange={(e) => handleStringChange(e, "updateList")}
+          placeholder={data.updateList === "" ? "Select updateList" : data.updateList}
+        /><br /><br />
+        <Dropdown
+          optionLabel="list"
+          optionValue="list"
+          disabled = {data.updateList ==="" ? true : false}
+          value={data.updateList}
+          options={lists.filter(li => li.name === data.updateList)}
+          onChange={(e) => handleStringChange(e, "actionType")}
+          placeholder={data.actionType === "" ? "Select actionType" : data.actionType}
         />
-        <br />
-        <br />
-      </div>
-      <div className="p-field">
-        <label htmlFor="updateList" className="p-d-block">
-          Update List
-        </label>
-        <br />
-        <InputText
-          id="updateList"
-          aria-describedby="updateList"
-          className="p-d-block"
-          placeholder={data.updateList}
-          onKeyUp={(e) => handleStringChange(e, "updateList")}
-          onBlur={(e) => handleStringBlur(e, "updateList")}
-        />
-        <br />
-        <br />
-      </div>
+     
     </div>
   );
 }
