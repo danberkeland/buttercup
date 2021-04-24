@@ -74,8 +74,11 @@ export const getUpdateList = /* GraphQL */ `
     getUpdateList(id: $id) {
       id
       listName
-      listType
-      needList
+      listAffect
+      listIsEOD
+      listNeedDay
+      IsAM
+      whoUpdatedLast
       createdAt
       updatedAt
     }
@@ -91,8 +94,11 @@ export const listUpdateLists = /* GraphQL */ `
       items {
         id
         listName
-        listType
-        needList
+        listAffect
+        listIsEOD
+        listNeedDay
+        IsAM
+        whoUpdatedLast
         createdAt
         updatedAt
       }

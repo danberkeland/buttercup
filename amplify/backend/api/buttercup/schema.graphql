@@ -18,8 +18,11 @@ type logUpdate @model  {
 type updateList @model {
   id: ID!
   listName: String!
-  listType: String
-  needList: String
+  listAffect: String
+  listIsEOD: Boolean
+  listNeedDay: String
+  IsAM: Boolean
+  whoUpdatedLast: String
 }
 
 type location @model  {

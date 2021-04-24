@@ -108,8 +108,11 @@ export const createUpdateList = /* GraphQL */ `
     createUpdateList(input: $input, condition: $condition) {
       id
       listName
-      listType
-      needList
+      listAffect
+      listIsEOD
+      listNeedDay
+      IsAM
+      whoUpdatedLast
       createdAt
       updatedAt
     }
@@ -123,8 +126,11 @@ export const updateUpdateList = /* GraphQL */ `
     updateUpdateList(input: $input, condition: $condition) {
       id
       listName
-      listType
-      needList
+      listAffect
+      listIsEOD
+      listNeedDay
+      IsAM
+      whoUpdatedLast
       createdAt
       updatedAt
     }
@@ -138,8 +144,11 @@ export const deleteUpdateList = /* GraphQL */ `
     deleteUpdateList(input: $input, condition: $condition) {
       id
       listName
-      listType
-      needList
+      listAffect
+      listIsEOD
+      listNeedDay
+      IsAM
+      whoUpdatedLast
       createdAt
       updatedAt
     }

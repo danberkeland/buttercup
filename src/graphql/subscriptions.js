@@ -87,8 +87,11 @@ export const onCreateUpdateList = /* GraphQL */ `
     onCreateUpdateList {
       id
       listName
-      listType
-      needList
+      listAffect
+      listIsEOD
+      listNeedDay
+      IsAM
+      whoUpdatedLast
       createdAt
       updatedAt
     }
@@ -99,8 +102,11 @@ export const onUpdateUpdateList = /* GraphQL */ `
     onUpdateUpdateList {
       id
       listName
-      listType
-      needList
+      listAffect
+      listIsEOD
+      listNeedDay
+      IsAM
+      whoUpdatedLast
       createdAt
       updatedAt
     }
@@ -111,8 +117,11 @@ export const onDeleteUpdateList = /* GraphQL */ `
     onDeleteUpdateList {
       id
       listName
-      listType
-      needList
+      listAffect
+      listIsEOD
+      listNeedDay
+      IsAM
+      whoUpdatedLast
       createdAt
       updatedAt
     }
