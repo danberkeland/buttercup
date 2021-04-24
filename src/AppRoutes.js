@@ -5,6 +5,8 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 
 import BakerList from './pages/BakerList/bakerList'
+import CookList from './pages/CookList/CookList'
+import FOHList from './pages/FOHList/FOHList'
 import OrderList from './pages/OrderList/orderlist'
 import EODCount from './pages/EODCount/eodcount'
 import InvCount from './pages/InvCount/invcount'
@@ -21,6 +23,8 @@ function AppRoutes() {
       <div className="bigPicture">
         <Switch>
           <Route path="/BakerList" component={BakerList} /> 
+          <Route path="/BakerList" component={CookList} /> 
+          <Route path="/BakerList" component={FOHList} /> 
           <Route path="/OrderList" component={OrderList} /> 
           <Route path="/EODCount" component={EODCount} /> 
           <Route path="/InvCount" component={InvCount} /> 

@@ -24,6 +24,20 @@ function Nav() {
        },
      },
      {
+      label: "Cook List",
+      icon: "pi pi-fw pi-user",
+      command: () => {
+        window.location = "/CookList";
+      },
+    },
+    {
+      label: "FOH List",
+      icon: "pi pi-fw pi-user",
+      command: () => {
+        window.location = "/FOHList";
+      },
+    },
+     {
        label: "Order List",
        icon: "pi pi-fw pi-dollar",
        command: () => {
