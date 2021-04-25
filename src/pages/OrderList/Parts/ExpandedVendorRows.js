@@ -22,6 +22,7 @@ const ListGrid = styled.div`
   
   display: grid;
   justify-items:center;
+  align-items: center;
   grid-template-columns: 1fr 1fr;
 `;
 function ExpandedVendorRows({
