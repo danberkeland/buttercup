@@ -97,12 +97,13 @@ function EODCount() {
       </BasicContainer>
 
       {signedIn === "null" ?
+      <BasicContainer>
       <Button
         label="Please Sign in to make EOD Changes"
         icon="pi pi-plus"
         onClick={handleSignIn}
         className={"p-button-raised p-button-rounded"}
-      /> : <div></div>
+      /></BasicContainer> : <div></div>
       }
 
 
