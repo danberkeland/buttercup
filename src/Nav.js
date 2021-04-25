@@ -82,7 +82,7 @@ function Nav() {
            label: "Lists",
            icon: "pi pi-fw pi-book",
            command: () => {
-            window.location.hash = "/ListSettings";
+            window.location = "/ListSettings";
           },
          },
        ],

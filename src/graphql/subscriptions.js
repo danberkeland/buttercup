@@ -12,6 +12,7 @@ export const onCreateBakeryItem = /* GraphQL */ `
       actionType
       updateList
       location
+      whoUpdatedLast
       createdAt
       updatedAt
     }
@@ -28,6 +29,7 @@ export const onUpdateBakeryItem = /* GraphQL */ `
       actionType
       updateList
       location
+      whoUpdatedLast
       createdAt
       updatedAt
     }
@@ -44,6 +46,7 @@ export const onDeleteBakeryItem = /* GraphQL */ `
       actionType
       updateList
       location
+      whoUpdatedLast
       createdAt
       updatedAt
     }
@@ -88,10 +91,9 @@ export const onCreateUpdateList = /* GraphQL */ `
       id
       listName
       listAffect
-      listIsEOD
       listNeedDay
       IsAM
-      whoUpdatedLast
+      assignedTo
       createdAt
       updatedAt
     }
@@ -103,10 +105,9 @@ export const onUpdateUpdateList = /* GraphQL */ `
       id
       listName
       listAffect
-      listIsEOD
       listNeedDay
       IsAM
-      whoUpdatedLast
+      assignedTo
       createdAt
       updatedAt
     }
@@ -118,10 +119,9 @@ export const onDeleteUpdateList = /* GraphQL */ `
       id
       listName
       listAffect
-      listIsEOD
       listNeedDay
       IsAM
-      whoUpdatedLast
+      assignedTo
       createdAt
       updatedAt
     }

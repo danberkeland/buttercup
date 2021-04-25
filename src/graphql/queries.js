@@ -12,6 +12,7 @@ export const getBakeryItem = /* GraphQL */ `
       actionType
       updateList
       location
+      whoUpdatedLast
       createdAt
       updatedAt
     }
@@ -33,6 +34,7 @@ export const listBakeryItems = /* GraphQL */ `
         actionType
         updateList
         location
+        whoUpdatedLast
         createdAt
         updatedAt
       }
@@ -75,10 +77,9 @@ export const getUpdateList = /* GraphQL */ `
       id
       listName
       listAffect
-      listIsEOD
       listNeedDay
       IsAM
-      whoUpdatedLast
+      assignedTo
       createdAt
       updatedAt
     }
@@ -95,10 +96,9 @@ export const listUpdateLists = /* GraphQL */ `
         id
         listName
         listAffect
-        listIsEOD
         listNeedDay
         IsAM
-        whoUpdatedLast
+        assignedTo
         createdAt
         updatedAt
       }

@@ -368,6 +368,17 @@
           "isDeprecated" : false,
           "deprecationReason" : null
         }, {
+          "name" : "whoUpdatedLast",
+          "description" : null,
+          "args" : [ ],
+          "type" : {
+            "kind" : "SCALAR",
+            "name" : "String",
+            "ofType" : null
+          },
+          "isDeprecated" : false,
+          "deprecationReason" : null
+        }, {
           "name" : "createdAt",
           "description" : null,
           "args" : [ ],
@@ -543,6 +554,15 @@
           "defaultValue" : null
         }, {
           "name" : "location",
+          "description" : null,
+          "type" : {
+            "kind" : "INPUT_OBJECT",
+            "name" : "ModelStringInput",
+            "ofType" : null
+          },
+          "defaultValue" : null
+        }, {
+          "name" : "whoUpdatedLast",
           "description" : null,
           "type" : {
             "kind" : "INPUT_OBJECT",
@@ -1319,17 +1339,6 @@
           "isDeprecated" : false,
           "deprecationReason" : null
         }, {
-          "name" : "listIsEOD",
-          "description" : null,
-          "args" : [ ],
-          "type" : {
-            "kind" : "SCALAR",
-            "name" : "Boolean",
-            "ofType" : null
-          },
-          "isDeprecated" : false,
-          "deprecationReason" : null
-        }, {
           "name" : "listNeedDay",
           "description" : null,
           "args" : [ ],
@@ -1352,7 +1361,7 @@
           "isDeprecated" : false,
           "deprecationReason" : null
         }, {
-          "name" : "whoUpdatedLast",
+          "name" : "assignedTo",
           "description" : null,
           "args" : [ ],
           "type" : {
@@ -1465,15 +1474,6 @@
           },
           "defaultValue" : null
         }, {
-          "name" : "listIsEOD",
-          "description" : null,
-          "type" : {
-            "kind" : "INPUT_OBJECT",
-            "name" : "ModelBooleanInput",
-            "ofType" : null
-          },
-          "defaultValue" : null
-        }, {
           "name" : "listNeedDay",
           "description" : null,
           "type" : {
@@ -1492,7 +1492,7 @@
           },
           "defaultValue" : null
         }, {
-          "name" : "whoUpdatedLast",
+          "name" : "assignedTo",
           "description" : null,
           "type" : {
             "kind" : "INPUT_OBJECT",
@@ -2236,6 +2236,15 @@
             "ofType" : null
           },
           "defaultValue" : null
+        }, {
+          "name" : "whoUpdatedLast",
+          "description" : null,
+          "type" : {
+            "kind" : "SCALAR",
+            "name" : "String",
+            "ofType" : null
+          },
+          "defaultValue" : null
         } ],
         "interfaces" : null,
         "enumValues" : null,
@@ -2301,6 +2310,15 @@
           "defaultValue" : null
         }, {
           "name" : "location",
+          "description" : null,
+          "type" : {
+            "kind" : "INPUT_OBJECT",
+            "name" : "ModelStringInput",
+            "ofType" : null
+          },
+          "defaultValue" : null
+        }, {
+          "name" : "whoUpdatedLast",
           "description" : null,
           "type" : {
             "kind" : "INPUT_OBJECT",
@@ -2421,6 +2439,15 @@
           "defaultValue" : null
         }, {
           "name" : "location",
+          "description" : null,
+          "type" : {
+            "kind" : "SCALAR",
+            "name" : "String",
+            "ofType" : null
+          },
+          "defaultValue" : null
+        }, {
+          "name" : "whoUpdatedLast",
           "description" : null,
           "type" : {
             "kind" : "SCALAR",
@@ -2647,15 +2674,6 @@
           },
           "defaultValue" : null
         }, {
-          "name" : "listIsEOD",
-          "description" : null,
-          "type" : {
-            "kind" : "SCALAR",
-            "name" : "Boolean",
-            "ofType" : null
-          },
-          "defaultValue" : null
-        }, {
           "name" : "listNeedDay",
           "description" : null,
           "type" : {
@@ -2674,7 +2692,7 @@
           },
           "defaultValue" : null
         }, {
-          "name" : "whoUpdatedLast",
+          "name" : "assignedTo",
           "description" : null,
           "type" : {
             "kind" : "SCALAR",
@@ -2710,15 +2728,6 @@
           },
           "defaultValue" : null
         }, {
-          "name" : "listIsEOD",
-          "description" : null,
-          "type" : {
-            "kind" : "INPUT_OBJECT",
-            "name" : "ModelBooleanInput",
-            "ofType" : null
-          },
-          "defaultValue" : null
-        }, {
           "name" : "listNeedDay",
           "description" : null,
           "type" : {
@@ -2737,7 +2746,7 @@
           },
           "defaultValue" : null
         }, {
-          "name" : "whoUpdatedLast",
+          "name" : "assignedTo",
           "description" : null,
           "type" : {
             "kind" : "INPUT_OBJECT",
@@ -2821,15 +2830,6 @@
           },
           "defaultValue" : null
         }, {
-          "name" : "listIsEOD",
-          "description" : null,
-          "type" : {
-            "kind" : "SCALAR",
-            "name" : "Boolean",
-            "ofType" : null
-          },
-          "defaultValue" : null
-        }, {
           "name" : "listNeedDay",
           "description" : null,
           "type" : {
@@ -2848,7 +2848,7 @@
           },
           "defaultValue" : null
         }, {
-          "name" : "whoUpdatedLast",
+          "name" : "assignedTo",
           "description" : null,
           "type" : {
             "kind" : "SCALAR",
@@ -4129,23 +4129,6 @@
         "onFragment" : false,
         "onField" : false
       }, {
-        "name" : "deprecated",
-        "description" : null,
-        "locations" : [ "FIELD_DEFINITION", "ENUM_VALUE" ],
-        "args" : [ {
-          "name" : "reason",
-          "description" : null,
-          "type" : {
-            "kind" : "SCALAR",
-            "name" : "String",
-            "ofType" : null
-          },
-          "defaultValue" : "\"No longer supported\""
-        } ],
-        "onOperation" : false,
-        "onFragment" : false,
-        "onField" : false
-      }, {
         "name" : "aws_api_key",
         "description" : "Tells the service this field/object has access authorized by an API key.",
         "locations" : [ "OBJECT", "FIELD_DEFINITION" ],
@@ -4178,6 +4161,23 @@
             }
           },
           "defaultValue" : null
+        } ],
+        "onOperation" : false,
+        "onFragment" : false,
+        "onField" : false
+      }, {
+        "name" : "deprecated",
+        "description" : null,
+        "locations" : [ "FIELD_DEFINITION", "ENUM_VALUE" ],
+        "args" : [ {
+          "name" : "reason",
+          "description" : null,
+          "type" : {
+            "kind" : "SCALAR",
+            "name" : "String",
+            "ofType" : null
+          },
+          "defaultValue" : "\"No longer supported\""
         } ],
         "onOperation" : false,
         "onFragment" : false,

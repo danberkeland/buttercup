@@ -5,8 +5,6 @@ import styled from "styled-components";
 import LocationGrid from "./Parts/LocationGrid";
 import AddLocation from "./Parts/AddLocation.js";
 
-import { Button } from "primereact/button";
-
 import { listBakeryItems, listLocations } from "../../graphql/queries";
 
 import { API, graphqlOperation } from "aws-amplify";
@@ -20,13 +18,6 @@ const BasicContainer = styled.div`
   padding: 5px 10px;
   margin: 4px auto;
   box-sizing: border-box;
-`;
-
-const UploadButtonContainer = styled.div`
-  position: fixed;
-  right: 20px;
-  top: 20px;
-  z-index: 10;
 `;
 
 const fetchInfo = async (operation, opString, limit) => {
@@ -49,7 +40,7 @@ function Settings() {
   const [locations, setLocations] = useState([]);
   const [bakeryItems, setBakeryItems] = useState([]);
 
-  const { setIsLoading, isModified, setIsModified } = useContext(ToggleContext);
+  const { setIsLoading } = useContext(ToggleContext);
 
   useEffect(() => {
     fetchBakeryItems();
@@ -78,39 +69,9 @@ function Settings() {
     }
   };
 
-  const handleInfoUpload = () => {
-    setIsLoading(true)
-
-    for (let bake of bakeryItems){
-      //      if bakeryItem exists, update
-      //  else, add
-    }
-
-    for (let loc of locations){
-      //  item for item in locations
-      //    if location exists, update
-      //  else, add
-    }
-    
-
-
-    setIsModified(false)
-    setIsLoading(false)
-  }
-
+  
   return (
     <React.Fragment>
-      <UploadButtonContainer>
-        {isModified ? (
-          <Button
-            icon="pi pi-upload"
-            className="p-button-raised p-button-rounded p-button-danger p-button-lg"
-            onClick={handleInfoUpload}
-          />
-        ) : (
-          <div></div>
-        )}
-      </UploadButtonContainer>
 
       <BasicContainer>
         <h1>Add/Edit Ingredients</h1>

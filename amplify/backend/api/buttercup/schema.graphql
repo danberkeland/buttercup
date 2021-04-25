@@ -7,6 +7,7 @@ type BakeryItem @model  {
   actionType: String
   updateList: String
   location: String
+  whoUpdatedLast: String
 }
 
 type logUpdate @model  {
@@ -19,10 +20,9 @@ type updateList @model {
   id: ID!
   listName: String!
   listAffect: String
-  listIsEOD: Boolean
   listNeedDay: String
   IsAM: Boolean
-  whoUpdatedLast: String
+  assignedTo: String
 }
 
 type location @model  {

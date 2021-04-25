@@ -14,6 +14,7 @@ const LocationGrid = ({
   setBakeryItems,
 }) => {
 
+  
   const [expandedRows, setExpandedRows] = useState(null);
   const { setIsLoading } = useContext(ToggleContext)
 
