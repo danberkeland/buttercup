@@ -1,5 +1,16 @@
 import React from "react";
+import TimeAgo from 'timeago-react'; // var TimeAgo = require('timeago-react');
+import us from 'timeago.js/lib/lang/en_US';
 
+import styled from "styled-components";
+
+const Ingredient = styled.div`
+  font-weight:bold;
+`;
+
+const IngDetails = styled.div`
+  font-size:.9em;
+`;
 
 function ExpandedVendorRows({
   data,
@@ -21,9 +32,17 @@ function ExpandedVendorRows({
     <div>
       {ingList.map((ing) => (
         <React.Fragment>
-          <h2>{ing.ingName}:{Number(ing.par) - Number(ing.actual)}</h2>
-          <h5>Last Updated: {ing.updatedAt} by {ing.whoUpdatedLast}</h5>
-          
+          <Ingredient>
+            {ing.ingName} &nbsp;({Number(ing.par) - Number(ing.actual)})
+          </Ingredient>
+          <IngDetails>
+          <div>Counted &nbsp;
+          <TimeAgo datetime={ing.updatedAt} locale={us} />
+          &nbsp;by {ing.whoUpdatedLast}</div>
+          <br />
+
+          </IngDetails>
+         
         </React.Fragment>
       ))}
     </div>
