@@ -60,13 +60,7 @@ function Nav() {
          window.location = "/EODCount";
        },
      },
-     {
-       label: "Inventory Count",
-       icon: "pi pi-fw pi-tags",
-       command: () => {
-         window.location = "/InvCount";
-       },
-     },
+     
      {
        label: "Settings",
        icon: "pi pi-fw pi-cog",

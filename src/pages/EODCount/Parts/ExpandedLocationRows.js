@@ -1,15 +1,15 @@
 import React from 'react'
 
 
-function InvCount() {
+function ExpandedLocationRows() {
   return (
     <div className="App">
       <header className="App-header">
         
-        <h2>InvCount</h2>
+        <h2>ExpandedLocationRows</h2>
       </header>
     </div>
   );
 }
 
-export default InvCount;
+export default ExpandedLocationRows;
