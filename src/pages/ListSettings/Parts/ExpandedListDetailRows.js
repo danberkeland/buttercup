@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 
 import { Dropdown } from "primereact/dropdown";
+import { MultiSelect } from "primereact/multiselect";
 import { ToggleContext } from "../../../dataContexts/ToggleContext";
 
 import { updateUpdateList } from "../../../graphql/mutations";
@@ -9,31 +10,25 @@ import { API, graphqlOperation } from "aws-amplify";
 
 const clonedeep = require("lodash.clonedeep");
 
-const days = [
-  { listNeedDay: "Monday"},
-  { listNeedDay: "Tuesday"},
-  { listNeedDay: "Wednesday"},
-  { listNeedDay: "Thursday"},
-  { listNeedDay: "Friday"},
-  { listNeedDay: "Saturday"},
-  { listNeedDay: "SUnday"},
+const daySelectItems = [
+  { label: "Monday", value: "Mon" },
+  { label: "Tuesday", value: "Tue" },
+  { label: "Wednesday", value: "Wed" },
+  { label: "Thursday", value: "Thu" },
+  { label: "Friday", value: "Fri" },
+  { label: "Saturday", value: "Sat" },
+  { label: "Sunday", value: "Sun" },
 ];
 
-const ampm = [
-    { isAM: "AM"},
-    { isAM: "PM"},
-    
-  ];
+const ampm = [{ IsAM: "AM" }, { IsAM: "PM" }];
 
-  const assigned = [
-    { assignedTo: "Baker"},
-    { assignedTo: "Cook"},
-    { assignedTo: "Foh"},
-    
-  ];
+const assigned = [
+  { assignedTo: "Baker" },
+  { assignedTo: "Cook" },
+  { assignedTo: "Foh" },
+];
 
 function ExpandedListDetailRows({ data, lists, setLists }) {
-  
   const { setIsLoading } = useContext(ToggleContext);
 
   const updateDBattr = async (id, attr, val) => {
@@ -53,15 +48,14 @@ function ExpandedListDetailRows({ data, lists, setLists }) {
     }
   };
 
-  
-
   const handleStringChange = (e, attr) => {
     try {
       let listToModify = clonedeep(lists);
       let id = data.listName + data.listAffect;
       let ind = listToModify.findIndex(
         (inv) =>
-          inv["listName"] === data.listName && inv["listAffect"] === data.listAffect
+          inv["listName"] === data.listName &&
+          inv["listAffect"] === data.listAffect
       );
       let val = e.target.value;
       listToModify[ind][attr] = val;
@@ -74,31 +68,24 @@ function ExpandedListDetailRows({ data, lists, setLists }) {
   };
 
   
+  
   return (
     <div>
-      
-
-      <Dropdown
-        optionLabel="listNeedDay"
-        optionValue="listNeedDay"
+      <MultiSelect
         value={data.listNeedDay}
-        options={days}
+        options={daySelectItems}
         onChange={(e) => handleStringChange(e, "listNeedDay")}
-        placeholder={
-          !data.listNeedDay ? "Select updateList" : data.listNeedDay
-        }
       />
+
       <br />
       <br />
       <Dropdown
-        optionLabel="isAM"
-        optionValue="isAM"
-        value={data.isAM}
+        optionLabel="IsAM"
+        optionValue="IsAM"
+        value={data.IsAM}
         options={ampm}
-        onChange={(e) => handleStringChange(e, "isAM")}
-        placeholder={
-          !data.isAM ? "AM or PM check" : data.isAM
-        }
+        onChange={(e) => handleStringChange(e, "IsAM")}
+        placeholder={!data.IsAM ? "AM or PM check" : data.IsAM}
       />
       <br />
       <br />
@@ -108,13 +95,10 @@ function ExpandedListDetailRows({ data, lists, setLists }) {
         value={data.assignedTo}
         options={assigned}
         onChange={(e) => handleStringChange(e, "assignedTo")}
-        placeholder={
-          !data.assignedTo ? "Assigned To" : data.assignedTo
-        }
+        placeholder={!data.assignedTo ? "Assigned To" : data.assignedTo}
       />
       <br />
       <br />
-      
     </div>
   );
 }

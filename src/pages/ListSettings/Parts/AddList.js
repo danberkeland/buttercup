@@ -45,8 +45,8 @@ const AddList = ({ loc, lists, setLists }) => {
       id: loc + pickedList,
       listName: loc,
       listAffect: pickedList,
-      listNeedDay: "Mon",
-      IsAM: true,
+      listNeedDay: ["Mon"],
+      IsAM: "AM",
       assignedTo: "Baker",
     };
     let checkItems = listToModify.map((li) => li.listAffect);

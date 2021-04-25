@@ -20,8 +20,8 @@ type updateList @model {
   id: ID!
   listName: String!
   listAffect: String
-  listNeedDay: String
-  IsAM: Boolean
+  listNeedDay: [String]
+  IsAM: String
   assignedTo: String
 }
 
