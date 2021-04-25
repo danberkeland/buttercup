@@ -32,7 +32,7 @@ const ExpandedListRows = ({ data, lists, setLists }) => {
         <Column headerStyle={{ width: "4rem" }}></Column>
         <Column expander style={{ width: "3em" }} />
 
-        <Column field="listAffect" header="List Affect" body={e => createListAffect(e)}/>
+        <Column field="listAffect" header="Sub List Name" body={e => createListAffect(e)}/>
         <Column
             headerStyle={{ width: "4rem" }}
             body={(e) => DeleteList(e.listAffect,data.listName,lists,setLists,setIsLoading)}
