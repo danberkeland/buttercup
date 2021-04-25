@@ -10,7 +10,6 @@ import { createBakeryItem } from "../../../graphql/mutations";
 
 import { API, graphqlOperation } from "aws-amplify";
 
-
 const clonedeep = require("lodash.clonedeep");
 
 const BasicContainer = styled.div`
@@ -25,23 +24,22 @@ const BasicContainer = styled.div`
 
 const AddIngredient = ({ loc, bakeryItems, setBakeryItems }) => {
   const [pickedItem, setPickedItem] = useState("");
-  const { setIsLoading } = useContext(ToggleContext)
-
+  const { setIsLoading } = useContext(ToggleContext);
 
   const createDBIngredient = async (addDetails) => {
     try {
       await API.graphql(
         graphqlOperation(createBakeryItem, { input: { ...addDetails } })
       );
-      setIsLoading(false)
+      setIsLoading(false);
     } catch (error) {
       console.log("error on creating Bakery Item", error);
-      setIsLoading(false)
+      setIsLoading(false);
     }
   };
 
   const handleAddItem = (e) => {
-    setIsLoading(true)
+    setIsLoading(true);
     let itemsToModify = clonedeep(bakeryItems);
     let addDetails = {
       id: pickedItem + loc,
@@ -61,10 +59,9 @@ const AddIngredient = ({ loc, bakeryItems, setBakeryItems }) => {
 
       setBakeryItems(itemsToModify);
       setPickedItem("");
-      
     } catch {
       console.log("error creating ingredient");
-      setIsLoading(false)
+      setIsLoading(false);
     }
   };
 

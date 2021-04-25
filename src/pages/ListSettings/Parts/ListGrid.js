@@ -23,7 +23,7 @@ const ListGrid = ({
   ]
 
   const rowExpansionTemplate = (data) => {
-    return <ExpandedListRows data={data} lists={lists} setBakeryItems={setLists}/>;
+    return <ExpandedListRows data={data} lists={lists} setLists={setLists}/>;
   };
 
   return (
