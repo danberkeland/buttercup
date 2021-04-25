@@ -9,6 +9,7 @@ export const createBakeryItem = /* GraphQL */ `
     createBakeryItem(input: $input, condition: $condition) {
       id
       par
+      actual
       ingName
       trigger
       actionDescrip
@@ -29,6 +30,7 @@ export const updateBakeryItem = /* GraphQL */ `
     updateBakeryItem(input: $input, condition: $condition) {
       id
       par
+      actual
       ingName
       trigger
       actionDescrip
@@ -49,6 +51,7 @@ export const deleteBakeryItem = /* GraphQL */ `
     deleteBakeryItem(input: $input, condition: $condition) {
       id
       par
+      actual
       ingName
       trigger
       actionDescrip

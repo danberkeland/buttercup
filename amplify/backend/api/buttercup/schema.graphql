@@ -1,6 +1,7 @@
 type BakeryItem @model  {
   id: ID!
   par: Int
+  actual: Int
   ingName: String!
   trigger: Int
   actionDescrip: String

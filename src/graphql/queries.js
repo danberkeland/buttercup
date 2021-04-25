@@ -6,6 +6,7 @@ export const getBakeryItem = /* GraphQL */ `
     getBakeryItem(id: $id) {
       id
       par
+      actual
       ingName
       trigger
       actionDescrip
@@ -28,6 +29,7 @@ export const listBakeryItems = /* GraphQL */ `
       items {
         id
         par
+        actual
         ingName
         trigger
         actionDescrip

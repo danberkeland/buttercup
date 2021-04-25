@@ -6,6 +6,7 @@ export const onCreateBakeryItem = /* GraphQL */ `
     onCreateBakeryItem {
       id
       par
+      actual
       ingName
       trigger
       actionDescrip
@@ -23,6 +24,7 @@ export const onUpdateBakeryItem = /* GraphQL */ `
     onUpdateBakeryItem {
       id
       par
+      actual
       ingName
       trigger
       actionDescrip
@@ -40,6 +42,7 @@ export const onDeleteBakeryItem = /* GraphQL */ `
     onDeleteBakeryItem {
       id
       par
+      actual
       ingName
       trigger
       actionDescrip
