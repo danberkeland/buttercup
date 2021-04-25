@@ -26,6 +26,7 @@ function ExpandedLocationRows({
       id: id,
       actual: val,
       whoUpdatedLast: signedIn,
+      isChecked: false,
     };
     try {
       await API.graphql(

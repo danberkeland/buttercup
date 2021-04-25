@@ -19,8 +19,7 @@ const IngDetails = styled.div`
 `;
 
 const ListGrid = styled.div`
-  width: 80%;
-  margin: auto;
+  
   display: grid;
   justify-items:center;
   grid-template-columns: 1fr 1fr;
