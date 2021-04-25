@@ -70,7 +70,7 @@ function ExpandedLocationRows({
       )
       .map((it) => it.listAffect)
       .includes(ba.actionType)
-  );
+  ).filter(ind => ind.location === data.locationName);
   console.log(ingList)
 
   return (
