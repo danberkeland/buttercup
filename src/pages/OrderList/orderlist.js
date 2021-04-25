@@ -93,7 +93,7 @@ function OrderList() {
 
       <BasicContainer>
         <h2>Vendors</h2>
-        <Vendors lists={lists} bakeryItems={bakeryItems}
+        <Vendors lists={lists} setLists={setLists} bakeryItems={bakeryItems} setBakeryItems={setBakeryItems}
           
         />
       </BasicContainer>

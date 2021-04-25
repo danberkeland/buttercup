@@ -14,6 +14,7 @@ export const getBakeryItem = /* GraphQL */ `
       updateList
       location
       whoUpdatedLast
+      isChecked
       createdAt
       updatedAt
     }
@@ -37,6 +38,7 @@ export const listBakeryItems = /* GraphQL */ `
         updateList
         location
         whoUpdatedLast
+        isChecked
         createdAt
         updatedAt
       }

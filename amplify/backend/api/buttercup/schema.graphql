@@ -9,6 +9,7 @@ type BakeryItem @model  {
   updateList: String
   location: String
   whoUpdatedLast: String
+  isChecked: Boolean
 }
 
 type logUpdate @model  {
