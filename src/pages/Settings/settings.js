@@ -5,7 +5,7 @@ import styled from "styled-components";
 import LocationGrid from "./Parts/LocationGrid";
 import AddLocation from "./Parts/AddLocation.js";
 
-import { listBakeryItems, listLocations } from "../../graphql/queries";
+import { listBakeryItems, listLocations, listUpdateLists } from "../../graphql/queries";
 
 import { API, graphqlOperation } from "aws-amplify";
 import { ToggleContext } from "../../dataContexts/ToggleContext";
@@ -39,12 +39,14 @@ const fetchInfo = async (operation, opString, limit) => {
 function Settings() {
   const [locations, setLocations] = useState([]);
   const [bakeryItems, setBakeryItems] = useState([]);
+  const [ lists, setLists ] = useState([])
 
   const { setIsLoading } = useContext(ToggleContext);
 
   useEffect(() => {
     fetchBakeryItems();
     fetchLocations();
+    fetchLists();
   }, []);
 
   const fetchBakeryItems = async () => {
@@ -62,9 +64,21 @@ function Settings() {
     try {
       let locs = await fetchInfo(listLocations, "listLocations", "50");
       setLocations(locs);
-      setIsLoading(false);
+      
     } catch (error) {
       console.log("error on fetching Location List", error);
+      setIsLoading(false);
+    }
+  };
+
+  const fetchLists = async () => {
+    setIsLoading(true);
+    try {
+      let items = await fetchInfo(listUpdateLists, "listUpdateLists", "1000");
+      setLists(items);
+      setIsLoading(false);
+    } catch (error) {
+      console.log("error on fetching updateLists", error);
       setIsLoading(false);
     }
   };
@@ -88,6 +102,8 @@ function Settings() {
           setLocations={setLocations}
           bakeryItems={bakeryItems}
           setBakeryItems={setBakeryItems}
+          lists={lists}
+          setLists={setLists}
         />
       </BasicContainer>
     </React.Fragment>

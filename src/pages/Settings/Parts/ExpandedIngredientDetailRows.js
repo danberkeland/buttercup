@@ -10,17 +10,9 @@ import { API, graphqlOperation } from "aws-amplify";
 
 const clonedeep = require("lodash.clonedeep");
 
-const lists = [
-  { name: "Baker", code: "baker", list: "Mix" },
-  { name: "Baker", code: "baker", list: "Make" },
-  { name: "Baker", code: "baker", list: "Scale" },
-  { name: "Order", code: "order", list: "Robb Ross" },
-  { name: "Order", code: "order", list: "Pyra" },
-  { name: "Shop", code: "shop", list: "Costco" },
-  { name: "Shop", code: "shop", list: "Smart n Final" },
-];
 
-function ExpandedIngredientDetailRows({ data, bakeryItems, setBakeryItems }) {
+
+function ExpandedIngredientDetailRows({ data, bakeryItems, setBakeryItems, lists, setLists }) {
   const [pickedItem, setPickedItem] = useState();
 
   const { setIsLoading } = useContext(ToggleContext);
@@ -101,7 +93,7 @@ function ExpandedIngredientDetailRows({ data, bakeryItems, setBakeryItems }) {
   };
 
   const reduceList = () => {
-    let reducedList = lists.map((red) => red.name);
+    let reducedList = lists.map((red) => red.listName);
     reducedList = new Set(reducedList);
     reducedList = Array.from(reducedList);
     reducedList = reducedList.map((red) => ({
@@ -150,7 +142,7 @@ function ExpandedIngredientDetailRows({ data, bakeryItems, setBakeryItems }) {
       <Dropdown
         optionLabel="name"
         optionValue="name"
-        value={data.actionType}
+        value={data.updateList}
         options={reduceList()}
         onChange={(e) => handleStringChange(e, "updateList")}
         placeholder={
@@ -160,11 +152,11 @@ function ExpandedIngredientDetailRows({ data, bakeryItems, setBakeryItems }) {
       <br />
       <br />
       <Dropdown
-        optionLabel="list"
-        optionValue="list"
+        optionLabel="listAffect"
+        optionValue="listAffect"
         disabled={data.updateList === "" ? true : false}
         value={data.updateList}
-        options={lists.filter((li) => li.name === data.updateList)}
+        options={lists.filter((li) => li.listName === data.updateList)}
         onChange={(e) => handleStringChange(e, "actionType")}
         placeholder={
           data.actionType === "" ? "Select actionType" : data.actionType

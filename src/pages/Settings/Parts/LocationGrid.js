@@ -6,20 +6,27 @@ import { ExpandedIngredientRows } from "./ExpandedIngredientRows";
 import DeleteLocation from "./DeleteLocation";
 import { ToggleContext } from "../../../dataContexts/ToggleContext";
 
-
 const LocationGrid = ({
   locations,
   setLocations,
   bakeryItems,
   setBakeryItems,
+  lists,
+  setLists,
 }) => {
-
-  
   const [expandedRows, setExpandedRows] = useState(null);
-  const { setIsLoading } = useContext(ToggleContext)
+  const { setIsLoading } = useContext(ToggleContext);
 
   const rowExpansionTemplate = (data) => {
-    return <ExpandedIngredientRows data={data} bakeryItems={bakeryItems} setBakeryItems={setBakeryItems}/>;
+    return (
+      <ExpandedIngredientRows
+        data={data}
+        bakeryItems={bakeryItems}
+        setBakeryItems={setBakeryItems}
+        lists={lists}
+        setLists={setLists}
+      />
+    );
   };
 
   return (
@@ -29,7 +36,7 @@ const LocationGrid = ({
           value={locations}
           expandedRows={expandedRows}
           onRowToggle={(e) => setExpandedRows(e.data)}
-          rowExpansionTemplate={e => rowExpansionTemplate(e)}
+          rowExpansionTemplate={(e) => rowExpansionTemplate(e)}
           dataKey="locationName"
           className="p-datatable-sm"
         >
@@ -38,7 +45,9 @@ const LocationGrid = ({
 
           <Column
             headerStyle={{ width: "4rem" }}
-            body={(e) => DeleteLocation(e.id,locations,setLocations,setIsLoading)}
+            body={(e) =>
+              DeleteLocation(e.id, locations, setLocations, setIsLoading)
+            }
           ></Column>
         </DataTable>
       </div>

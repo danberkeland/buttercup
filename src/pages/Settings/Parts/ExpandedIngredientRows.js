@@ -7,26 +7,41 @@ import AddIngredient from "./AddIngredient";
 import DeleteIngredient from "./DeleteIngredient";
 import { ToggleContext } from "../../../dataContexts/ToggleContext";
 
-export const ExpandedIngredientRows = ({ data, bakeryItems, setBakeryItems }) => {
-  
+export const ExpandedIngredientRows = ({
+  data,
+  bakeryItems,
+  setBakeryItems,
+  lists,
+  setLists,
+}) => {
   const [expandedRows, setExpandedRows] = useState(null);
-  const { setIsLoading } = useContext(ToggleContext)
+  const { setIsLoading } = useContext(ToggleContext);
   const rowExpansionTemplate = (e) => {
-    return <ExpandedIngredientDetailRows data={e} bakeryItems={bakeryItems} setBakeryItems={setBakeryItems}/>;
+    return (
+      <ExpandedIngredientDetailRows
+        data={e}
+        bakeryItems={bakeryItems}
+        setBakeryItems={setBakeryItems}
+        lists={lists}
+        setLists={setLists}
+      />
+    );
   };
 
   const createIngName = (e) => {
-    let isComplete =""
-    if (e.par===0 || e.actionType==='' || e.updateList===''){
-      isComplete =" (incomplete)"
+    let isComplete = "";
+    if (e.par === 0 || e.actionType === "" || e.updateList === "") {
+      isComplete = " (incomplete)";
     }
-    return e.ingName+isComplete
-  }
+    return e.ingName + isComplete;
+  };
 
   return (
     <div className="delivDate-subtable">
       <DataTable
-        value={bakeryItems.filter(item => item.location === data.locationName)}
+        value={bakeryItems.filter(
+          (item) => item.location === data.locationName
+        )}
         className="p-datatable-sm"
         expandedRows={expandedRows}
         onRowToggle={(e) => setExpandedRows(e.data)}
@@ -36,13 +51,29 @@ export const ExpandedIngredientRows = ({ data, bakeryItems, setBakeryItems }) =>
         <Column headerStyle={{ width: "4rem" }}></Column>
         <Column expander style={{ width: "3em" }} />
 
-        <Column field="ingName" header="Ingredient" body={e => createIngName(e)}/>
         <Column
-            headerStyle={{ width: "4rem" }}
-            body={(e) => DeleteIngredient(e.ingName,data.locationName,bakeryItems,setBakeryItems,setIsLoading)}
-          ></Column>
+          field="ingName"
+          header="Ingredient"
+          body={(e) => createIngName(e)}
+        />
+        <Column
+          headerStyle={{ width: "4rem" }}
+          body={(e) =>
+            DeleteIngredient(
+              e.ingName,
+              data.locationName,
+              bakeryItems,
+              setBakeryItems,
+              setIsLoading
+            )
+          }
+        ></Column>
       </DataTable>
-      <AddIngredient loc={data.locationName} bakeryItems={bakeryItems} setBakeryItems={setBakeryItems}/>
+      <AddIngredient
+        loc={data.locationName}
+        bakeryItems={bakeryItems}
+        setBakeryItems={setBakeryItems}
+      />
     </div>
   );
 };
