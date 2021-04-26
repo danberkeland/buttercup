@@ -88,7 +88,7 @@ function OrderList() {
   return (
     <React.Fragment>
       <BasicContainer>
-        <h1>Order List</h1>
+        <h1>Shopping List</h1>
       </BasicContainer>
 
       <BasicContainer>
