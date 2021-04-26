@@ -15,7 +15,7 @@ const Ingredient = styled.div`
 `;
 
 const IngDetails = styled.div`
-  font-size: 0.9em;
+  font-size: 0.8em;
 `;
 
 const ListGrid = styled.div`
@@ -23,7 +23,7 @@ const ListGrid = styled.div`
   display: grid;
   justify-items:center;
   align-items: center;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 3fr;
 `;
 function ExpandedVendorRows({
   data,
