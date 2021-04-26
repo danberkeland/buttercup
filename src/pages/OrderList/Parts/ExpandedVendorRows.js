@@ -22,8 +22,8 @@ const ListGrid = styled.div`
   
   display: grid;
   justify-items:center;
-  align-items: center;
-  grid-template-columns: 1fr 3fr;
+  align-items: flex-start;
+  grid-template-columns: 1fr 5fr;
 `;
 function ExpandedVendorRows({
   data,
@@ -101,7 +101,6 @@ function ExpandedVendorRows({
                 />
                 &nbsp;by {ing.whoUpdatedLast}
               </div>
-              <br />
             </IngDetails>
           </div>
         </ListGrid>
