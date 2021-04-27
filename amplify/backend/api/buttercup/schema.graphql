@@ -10,13 +10,9 @@ type BakeryItem @model  {
   location: String
   whoUpdatedLast: String
   isChecked: Boolean
+  owner: String
 }
 
-type logUpdate @model  {
-  id: ID!
-  adminName: String!
-  updateList: String
-}
 
 type updateList @model {
   id: ID!
@@ -25,10 +21,12 @@ type updateList @model {
   listNeedDay: [String]
   IsAM: String
   assignedTo: String
+  owner: String
 }
 
 type location @model  {
   id: ID!
   locationName: String!
+  owner: String
 }
 

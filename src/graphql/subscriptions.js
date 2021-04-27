@@ -15,6 +15,7 @@ export const onCreateBakeryItem = /* GraphQL */ `
       location
       whoUpdatedLast
       isChecked
+      owner
       createdAt
       updatedAt
     }
@@ -34,6 +35,7 @@ export const onUpdateBakeryItem = /* GraphQL */ `
       location
       whoUpdatedLast
       isChecked
+      owner
       createdAt
       updatedAt
     }
@@ -53,39 +55,7 @@ export const onDeleteBakeryItem = /* GraphQL */ `
       location
       whoUpdatedLast
       isChecked
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const onCreateLogUpdate = /* GraphQL */ `
-  subscription OnCreateLogUpdate {
-    onCreateLogUpdate {
-      id
-      adminName
-      updateList
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const onUpdateLogUpdate = /* GraphQL */ `
-  subscription OnUpdateLogUpdate {
-    onUpdateLogUpdate {
-      id
-      adminName
-      updateList
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const onDeleteLogUpdate = /* GraphQL */ `
-  subscription OnDeleteLogUpdate {
-    onDeleteLogUpdate {
-      id
-      adminName
-      updateList
+      owner
       createdAt
       updatedAt
     }
@@ -100,6 +70,7 @@ export const onCreateUpdateList = /* GraphQL */ `
       listNeedDay
       IsAM
       assignedTo
+      owner
       createdAt
       updatedAt
     }
@@ -114,6 +85,7 @@ export const onUpdateUpdateList = /* GraphQL */ `
       listNeedDay
       IsAM
       assignedTo
+      owner
       createdAt
       updatedAt
     }
@@ -128,6 +100,7 @@ export const onDeleteUpdateList = /* GraphQL */ `
       listNeedDay
       IsAM
       assignedTo
+      owner
       createdAt
       updatedAt
     }
@@ -138,6 +111,7 @@ export const onCreateLocation = /* GraphQL */ `
     onCreateLocation {
       id
       locationName
+      owner
       createdAt
       updatedAt
     }
@@ -148,6 +122,7 @@ export const onUpdateLocation = /* GraphQL */ `
     onUpdateLocation {
       id
       locationName
+      owner
       createdAt
       updatedAt
     }
@@ -158,6 +133,7 @@ export const onDeleteLocation = /* GraphQL */ `
     onDeleteLocation {
       id
       locationName
+      owner
       createdAt
       updatedAt
     }

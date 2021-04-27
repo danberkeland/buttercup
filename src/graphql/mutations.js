@@ -18,6 +18,7 @@ export const createBakeryItem = /* GraphQL */ `
       location
       whoUpdatedLast
       isChecked
+      owner
       createdAt
       updatedAt
     }
@@ -40,6 +41,7 @@ export const updateBakeryItem = /* GraphQL */ `
       location
       whoUpdatedLast
       isChecked
+      owner
       createdAt
       updatedAt
     }
@@ -62,48 +64,7 @@ export const deleteBakeryItem = /* GraphQL */ `
       location
       whoUpdatedLast
       isChecked
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const createLogUpdate = /* GraphQL */ `
-  mutation CreateLogUpdate(
-    $input: CreateLogUpdateInput!
-    $condition: ModellogUpdateConditionInput
-  ) {
-    createLogUpdate(input: $input, condition: $condition) {
-      id
-      adminName
-      updateList
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const updateLogUpdate = /* GraphQL */ `
-  mutation UpdateLogUpdate(
-    $input: UpdateLogUpdateInput!
-    $condition: ModellogUpdateConditionInput
-  ) {
-    updateLogUpdate(input: $input, condition: $condition) {
-      id
-      adminName
-      updateList
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const deleteLogUpdate = /* GraphQL */ `
-  mutation DeleteLogUpdate(
-    $input: DeleteLogUpdateInput!
-    $condition: ModellogUpdateConditionInput
-  ) {
-    deleteLogUpdate(input: $input, condition: $condition) {
-      id
-      adminName
-      updateList
+      owner
       createdAt
       updatedAt
     }
@@ -121,6 +82,7 @@ export const createUpdateList = /* GraphQL */ `
       listNeedDay
       IsAM
       assignedTo
+      owner
       createdAt
       updatedAt
     }
@@ -138,6 +100,7 @@ export const updateUpdateList = /* GraphQL */ `
       listNeedDay
       IsAM
       assignedTo
+      owner
       createdAt
       updatedAt
     }
@@ -155,6 +118,7 @@ export const deleteUpdateList = /* GraphQL */ `
       listNeedDay
       IsAM
       assignedTo
+      owner
       createdAt
       updatedAt
     }
@@ -168,6 +132,7 @@ export const createLocation = /* GraphQL */ `
     createLocation(input: $input, condition: $condition) {
       id
       locationName
+      owner
       createdAt
       updatedAt
     }
@@ -181,6 +146,7 @@ export const updateLocation = /* GraphQL */ `
     updateLocation(input: $input, condition: $condition) {
       id
       locationName
+      owner
       createdAt
       updatedAt
     }
@@ -194,6 +160,7 @@ export const deleteLocation = /* GraphQL */ `
     deleteLocation(input: $input, condition: $condition) {
       id
       locationName
+      owner
       createdAt
       updatedAt
     }

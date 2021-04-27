@@ -50,6 +50,7 @@ const AddIngredient = ({ loc, bakeryItems, setBakeryItems }) => {
       actionType: "",
       updateList: "",
       location: loc,
+      owner: "buttercupmb"
     };
     let checkItems = itemsToModify.map((items) => items.ingName);
     try {

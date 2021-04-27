@@ -45,6 +45,7 @@ const AddLocation = ({ locations, setLocations }) => {
     let addDetails = {
       id: pickedLocation,
       locationName: pickedLocation,
+      owner: "buttercupmb"
     };
     let checkLocs = locsToModify.map((locs) => locs.locationName);
     try {

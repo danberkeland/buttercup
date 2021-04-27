@@ -48,6 +48,7 @@ const AddList = ({ loc, lists, setLists }) => {
       listNeedDay: ["Mon"],
       IsAM: "AM",
       assignedTo: "Baker",
+      owner: "buttercupmb"
     };
     let checkItems = listToModify.map((li) => li.listAffect);
     try {

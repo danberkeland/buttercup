@@ -15,6 +15,7 @@ export const getBakeryItem = /* GraphQL */ `
       location
       whoUpdatedLast
       isChecked
+      owner
       createdAt
       updatedAt
     }
@@ -39,35 +40,7 @@ export const listBakeryItems = /* GraphQL */ `
         location
         whoUpdatedLast
         isChecked
-        createdAt
-        updatedAt
-      }
-      nextToken
-    }
-  }
-`;
-export const getLogUpdate = /* GraphQL */ `
-  query GetLogUpdate($id: ID!) {
-    getLogUpdate(id: $id) {
-      id
-      adminName
-      updateList
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const listLogUpdates = /* GraphQL */ `
-  query ListLogUpdates(
-    $filter: ModellogUpdateFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listLogUpdates(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        id
-        adminName
-        updateList
+        owner
         createdAt
         updatedAt
       }
@@ -84,6 +57,7 @@ export const getUpdateList = /* GraphQL */ `
       listNeedDay
       IsAM
       assignedTo
+      owner
       createdAt
       updatedAt
     }
@@ -103,6 +77,7 @@ export const listUpdateLists = /* GraphQL */ `
         listNeedDay
         IsAM
         assignedTo
+        owner
         createdAt
         updatedAt
       }
@@ -115,6 +90,7 @@ export const getLocation = /* GraphQL */ `
     getLocation(id: $id) {
       id
       locationName
+      owner
       createdAt
       updatedAt
     }
@@ -130,6 +106,7 @@ export const listLocations = /* GraphQL */ `
       items {
         id
         locationName
+        owner
         createdAt
         updatedAt
       }
