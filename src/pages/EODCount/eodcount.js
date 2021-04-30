@@ -5,6 +5,7 @@ import swal from "@sweetalert/with-react";
 import Locations from "./Parts/Locations";
 
 import { Button } from "primereact/button";
+import { Dropdown } from "primereact/dropdown";
 
 import { listUpdateLists, listBakeryItems } from "../../graphql/queries";
 
@@ -38,15 +39,29 @@ const fetchInfo = async (operation, opString, limit) => {
 };
 
 function EODCount() {
-  const [ lists, setLists ] = useState([]);
-  const [ bakeryItems, setBakeryItems ] = useState([]);
-  const [ signedIn, setSignedIn ] = useState("null")
+  const [lists, setLists] = useState([]);
+  const [bakeryItems, setBakeryItems] = useState([]);
+  const [signedIn, setSignedIn] = useState("null");
+  const [listee, setListee] = useState("na");
+  const [timePeriod, setTimePeriod] = useState(false);
 
   const { setIsLoading } = useContext(ToggleContext);
 
+  const listItems = [
+    { label: "Baker", value: "Baker" },
+    { label: "Cook", value: "Cook" },
+    { label: "FOH", value: "FOH" },
+    { label: "all", value: "na" },
+  ];
+
+  const listTimes = [
+    { label: "Today", value: true },
+    { label: "All Days", value: false },
+  ];
+
   useEffect(() => {
     fetchLists();
-    fetchBakeryItems()
+    fetchBakeryItems();
   }, []);
 
   const fetchLists = async () => {
@@ -80,46 +95,59 @@ function EODCount() {
       content: "input",
     }).then(async (value) => {
       signIn = value;
-      setSignedIn(signIn)
-    
+      setSignedIn(signIn);
     });
-    
   };
-
-
-  
 
   return (
     <React.Fragment>
-
       <BasicContainer>
         <h1>EOD Counts</h1>
       </BasicContainer>
 
-      {signedIn === "null" ?
-      <BasicContainer>
-      <Button
-        label="Please Sign in to make EOD Changes"
-        icon="pi pi-plus"
-        onClick={handleSignIn}
-        className={"p-button-raised p-button-rounded"}
-      /></BasicContainer> : <div></div>
-      }
+      {signedIn === "null" ? (
+        <BasicContainer>
+          <Button
+            label="Please Sign in to make EOD Changes"
+            icon="pi pi-plus"
+            onClick={handleSignIn}
+            className={"p-button-raised p-button-rounded"}
+          />
+        </BasicContainer>
+      ) : (
+        <div></div>
+      )}
 
-
-      {signedIn !=="null" ?
-      <BasicContainer>
-        <h2>Locations</h2>
-        <Locations
-          lists={lists}
-          setLists={setLists}
-          bakeryItems={bakeryItems}
-          setBakeryItems={setBakeryItems}
-          signedIn={signedIn}
-
-        />
-      </BasicContainer> : <div></div>
-      }
+      {signedIn !== "null" ? (
+        <BasicContainer>
+          <h2>Locations</h2>
+          <Dropdown
+            optionLabel="label"
+            value={listee}
+            options={listItems}
+            onChange={(e) => setListee(e.value)}
+            placeholder="Choose assignee"
+          />
+          <Dropdown
+            optionLabel="label"
+            value={timePeriod}
+            options={listTimes}
+            onChange={(e) => setTimePeriod(e.value)}
+            placeholder="Choose Timeframe"
+          />
+          <Locations
+            lists={lists}
+            setLists={setLists}
+            bakeryItems={bakeryItems}
+            setBakeryItems={setBakeryItems}
+            signedIn={signedIn}
+            listDateFilter={timePeriod}
+            positionFilter={listee}
+          />
+        </BasicContainer>
+      ) : (
+        <div></div>
+      )}
     </React.Fragment>
   );
 }

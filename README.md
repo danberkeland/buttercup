@@ -1,70 +1,30 @@
-# Getting Started with Create React App
+# How to Use Buttercupadmin
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Settings
 
-## Available Scripts
+## Ingredients
 
-In the project directory, you can run:
+All ingredients, recipe components, paper products, office supplies, etc. can be catalogued here.  
 
-### `yarn start`
+First, locations are created (i.e. = `pantry`, `lower back shelf`, `sandwich prep`, or wherever ingredients are stored).
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Then ingredients are added to that location.  Each ingredient should have a unique and specific name.  Once the ingredient is added, it will show `incomplete` in parantheses next to it's name.  To remove this, expand the ingredient tab and complete the necessary information.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### `Par`
+Enter the base amount of product.  This is your 100% amount that should be reached when the product is restocked.  It could simply be 100, which will be taken as a percentage, or it could be specific to a number of bags, cans, or boxes.  It's up to you.  As long as it is a real number and the meaning is understood.
 
-### `yarn test`
+### `Trigger`
+This number triggers an action.  When your ingredient amount hits this number, an action that you specify will appear on the list that you specify.  For example, if your par for bags of flour is 10, and your inventory reaches 3, an action to `buy` may appear on your `Costco` list.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+ATTENTION:  For products that are simply brought back to par at regular intervals regardless of `trigger` amount, set `trigger` equal to `par`.  For example, if the par for bags of flour is 10, and more flour is bought each week to bring that number back to 10, set `par` and `trigger` to 10 to ensure that flour always ends up on order list.
 
-### `yarn build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Lists
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+All ingredients should be linked to an action that is taken once the amount of that ingredient has dipped beneath a 'trigger' amount.  There are currently 5 different lists that contain these actions.  [Add/Edit Lists](https://buttercupadmin/ListSettings).
 
-### `yarn eject`
+### `Baker`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+The Baker list contains actions
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

@@ -146,7 +146,7 @@ function ExpandedIngredientDetailRows({ data, bakeryItems, setBakeryItems, lists
         options={reduceList()}
         onChange={(e) => handleStringChange(e, "updateList")}
         placeholder={
-          data.updateList === "" ? "Select updateList" : data.updateList
+          data.updateList === "" ? "Select List of Actions" : data.updateList
         }
       />
       <br />
@@ -159,7 +159,7 @@ function ExpandedIngredientDetailRows({ data, bakeryItems, setBakeryItems, lists
         options={lists.filter((li) => li.listName === data.updateList)}
         onChange={(e) => handleStringChange(e, "actionType")}
         placeholder={
-          data.actionType === "" ? "Select actionType" : data.actionType
+          data.actionType === "" ? "Select Action or Vendor" : data.actionType
         }
       />
     </div>

@@ -17,6 +17,8 @@ function ExpandedLocationRows({
   bakeryItems,
   setBakeryItems,
   signedIn,
+  listDateFilter,
+  positionFilter
 }) {
  
     console.log(data)
@@ -62,13 +64,17 @@ function ExpandedLocationRows({
     }
   };
 
+  
+
+
   let ingList = bakeryItems.filter((ba) =>
     lists
-      .filter((li) =>
+      .filter((li) => listDateFilter ?
         li.listNeedDay.includes(
           DateTime.now().setZone("America/Los_Angeles").weekdayShort
-        )
+        ) : li 
       )
+      .filter((li) => positionFilter !== "na" ? li.assignedTo === positionFilter : li)
       .map((it) => it.listAffect)
       .includes(ba.actionType)
   ).filter(ind => ind.location === data.locationName);
