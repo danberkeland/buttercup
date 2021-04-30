@@ -12,13 +12,14 @@ const Vendors = ({
   bakeryItems,
   setBakeryItems,
   signedIn,
+  timePeriod
 }) => {
   const [expandedRows, setExpandedRows] = useState(null);
 
   let yesterday = DateTime.now()
     .setZone("America/Los_Angeles")
     .minus({ days: 1 }).weekdayShort;
-  let todayLists = lists.filter((li) => li.listNeedDay.includes(yesterday));
+  let todayLists = timePeriod ? lists.filter((li) => li.listNeedDay.includes(yesterday)) : lists
   todayLists = todayLists.map((to) => to.listAffect);
 
   let vendors = Array.from(

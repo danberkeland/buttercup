@@ -4,6 +4,8 @@ import styled from "styled-components";
 import swal from "@sweetalert/with-react";
 import Vendors from "./Parts/Vendors";
 
+import { Dropdown } from "primereact/dropdown";
+
 import { listUpdateLists, listBakeryItems } from "../../graphql/queries";
 
 import { API, graphqlOperation } from "aws-amplify";
@@ -36,15 +38,21 @@ const fetchInfo = async (operation, opString, limit) => {
 };
 
 function OrderList() {
-  const [ lists, setLists ] = useState([]);
-  const [ bakeryItems, setBakeryItems ] = useState([]);
-  const [ signedIn, setSignedIn ] = useState("null")
+  const [lists, setLists] = useState([]);
+  const [bakeryItems, setBakeryItems] = useState([]);
+  const [signedIn, setSignedIn] = useState("null");
+  const [timePeriod, setTimePeriod] = useState(false);
 
   const { setIsLoading } = useContext(ToggleContext);
 
+  const listTimes = [
+    { label: "Today", value: true },
+    { label: "All Days", value: false },
+  ];
+
   useEffect(() => {
     fetchLists();
-    fetchBakeryItems()
+    fetchBakeryItems();
   }, []);
 
   const fetchLists = async () => {
@@ -78,22 +86,30 @@ function OrderList() {
       content: "input",
     }).then(async (value) => {
       signIn = value;
-      setSignedIn(signIn)
-    
+      setSignedIn(signIn);
     });
-    
   };
-
 
   return (
     <React.Fragment>
       <BasicContainer>
         <h1>Shopping List</h1>
+        <Dropdown
+          optionLabel="label"
+          value={timePeriod}
+          options={listTimes}
+          onChange={(e) => setTimePeriod(e.value)}
+          placeholder="Choose Timeframe"
+        />
       </BasicContainer>
 
       <BasicContainer>
-        <Vendors lists={lists} setLists={setLists} bakeryItems={bakeryItems} setBakeryItems={setBakeryItems}
-          
+        <Vendors
+          lists={lists}
+          setLists={setLists}
+          bakeryItems={bakeryItems}
+          setBakeryItems={setBakeryItems}
+          timePeriod={timePeriod}
         />
       </BasicContainer>
     </React.Fragment>
