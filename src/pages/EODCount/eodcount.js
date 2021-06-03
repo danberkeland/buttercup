@@ -51,6 +51,8 @@ function EODCount() {
     { label: "Baker", value: "Baker" },
     { label: "Cook", value: "Cook" },
     { label: "FOH", value: "FOH" },
+    { label: "AM Prep", value: "AMPrep" },
+    { label: "Dessert", value: "Dessert" },
     { label: "all", value: "na" },
   ];
 

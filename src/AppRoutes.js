@@ -5,6 +5,8 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import BakerList from "./pages/BakerList/bakerList";
 import CookList from "./pages/CookList/CookList";
 import FOHList from "./pages/FOHList/FOHList";
+import AMPrep from "./pages/AMPrep/AMPrep";
+import Dessert from "./pages/Dessert/Dessert";
 import OrderList from "./pages/OrderList/orderlist";
 import EODCount from "./pages/EODCount/eodcount";
 import ShoppingList from "./pages/ShoppingList/ShoppingList";
@@ -21,6 +23,8 @@ function AppRoutes() {
           <Route path="/BakerList" component={BakerList} />
           <Route path="/CookList" component={CookList} />
           <Route path="/FOHList" component={FOHList} />
+          <Route path="/AMPrep" component={AMPrep} />
+          <Route path="/Dessert" component={Dessert} />
           <Route path="/OrderList" component={OrderList} />
           <Route path="/EODCount" component={EODCount} />
           <Route path="/ShoppingList" component={ShoppingList} />

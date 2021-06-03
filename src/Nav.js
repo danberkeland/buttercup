@@ -37,6 +37,20 @@ function Nav() {
         window.location = "/FOHList";
       },
     },
+    {
+      label: "AM Prep List",
+      icon: "pi pi-fw pi-user",
+      command: () => {
+        window.location = "/AMPrep";
+      },
+    },
+    {
+      label: "Dessert Baker List",
+      icon: "pi pi-fw pi-user",
+      command: () => {
+        window.location = "/Dessert";
+      },
+    },
      {
        label: "Order List",
        icon: "pi pi-fw pi-dollar",
