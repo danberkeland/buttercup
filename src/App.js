@@ -12,6 +12,8 @@ import { ToggleProvider } from "./dataContexts/ToggleContext";
 
 Amplify.configure(awsconfig);
 
+console.log("push update")
+
 function App() {
   return (
     <div className="App">
