@@ -12,7 +12,7 @@ import { ToggleProvider } from "./dataContexts/ToggleContext";
 
 Amplify.configure(awsconfig);
 
-console.log("push update")
+console.log("primary")
 
 function App() {
   return (
