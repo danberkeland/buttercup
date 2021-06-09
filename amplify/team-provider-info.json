@@ -13,7 +13,8 @@
     },
     "categories": {
       "auth": {
-        "buttercup119e0ebd": {}
+        "buttercup119e0ebd": {},
+        "userPoolGroups": {}
       }
     }
   }
